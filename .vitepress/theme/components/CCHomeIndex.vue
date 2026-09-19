@@ -7,16 +7,9 @@ import CCDailyQuote from "./CCDailyQuote.vue";
 interface ChapterItem {
   num: string;
   title: string;
-  group: "mechanics" | "electromagnetism" | "waves_modern" | "experiments";
-  volume:
-    | "必修第一册"
-    | "必修第二册"
-    | "必修第三册"
-    | "选必第一册"
-    | "选必第二册"
-    | "选必第三册"
-    | "实验专题";
-  volumeTag: "bx1" | "bx2" | "bx3" | "xb1" | "xb2" | "xb3" | "exp";
+  group: "syntax" | "verb_system" | "advanced" | "practical" | "intro";
+  volume: "导读说明" | "句法基础" | "三大从句" | "动词系统" | "句式拓展" | "综合实战" | "教材清单";
+  volumeTag: "guide" | "syntax" | "clause" | "verb" | "special" | "exam" | "textbook";
   fileCount: number;
   desc: string;
   focusTitle: string;
@@ -37,437 +30,225 @@ interface SpecialItem {
 
 const chapters: ChapterItem[] = [
   {
+    num: "00",
+    title: "说明与学习方法",
+    group: "intro",
+    volume: "导读说明",
+    volumeTag: "guide",
+    fileCount: 3,
+    desc: "知识库定位、高中英语语法全景图、自测与学习方法指导、错误反馈渠道",
+    focusTitle: "高中英语语法全景图与高效研读指南",
+    focusLink: "/00%20说明/高中英语语法全景图与学习方法",
+    keywords: ["语法全景图", "学习方法", "课标依据", "知识体系", "错误反馈"],
+    link: "/00%20说明/Readme",
+  },
+  {
     num: "01",
-    title: "运动的描述与匀变速规律",
-    group: "mechanics",
-    volume: "必修第一册",
-    volumeTag: "bx1",
-    fileCount: 5,
-    desc: "质点参考系、位移速度加速度、匀变速四大公式与推论、运动图像",
-    focusTitle: "运动图像与追及相遇模型",
-    focusLink: "/01%20运动的描述与匀变速规律/考点%20运动图像与追及相遇",
-    keywords: [
-      "质点参考系",
-      "位移与速度",
-      "加速度",
-      "匀变速四大公式",
-      "中间时刻速度",
-      "v-t 图像",
-      "追及相遇",
-    ],
-    link: "/01%20运动的描述与匀变速规律/index",
+    title: "简单句结构与句子成分",
+    group: "syntax",
+    volume: "句法基础",
+    volumeTag: "syntax",
+    fileCount: 3,
+    desc: "简单句 7 大基本句型、主谓宾定状补表 7 大成分拆解、长难句切分与分析技巧",
+    focusTitle: "简单句在语法填空与写作中的应用",
+    focusLink: "/01%20简单句结构与句子成分/考点%20简单句在语法填空与写作中的应用",
+    keywords: ["7大基本句型", "句子核心成分", "长难句分析", "划括号法", "语法填空"],
+    link: "/01%20简单句结构与句子成分/index",
   },
   {
     num: "02",
-    title: "相互作用与共点力平衡",
-    group: "mechanics",
-    volume: "必修第一册",
-    volumeTag: "bx1",
-    fileCount: 6,
-    desc: "重力弹力、静动摩擦力、力的合成与分解、共点力动态平衡",
-    focusTitle: "受力分析与动态平衡矢量三角形",
-    focusLink: "/02%20相互作用与共点力平衡/考点%20受力分析规范与动态平衡模型",
-    keywords: [
-      "重力与重心",
-      "胡克定律",
-      "静动摩擦力",
-      "力的合成正交分解",
-      "动态平衡矢量三角形",
-      "轻绳与轻杆",
-    ],
-    link: "/02%20相互作用与共点力平衡/index",
+    title: "定语从句",
+    group: "syntax",
+    volume: "三大从句",
+    volumeTag: "clause",
+    fileCount: 4,
+    desc: "关系代词与关系副词选用规则、介词+关系代词还原法、限制性与非限制性辨析",
+    focusTitle: "as 与 which 引导定语从句辨析",
+    focusLink: "/02%20定语从句/考点%20as与which引导定语从句辨析",
+    keywords: ["关系代词", "关系副词", "介词提前", "先行词", "限制性定语从句", "as与which"],
+    link: "/02%20定语从句/index",
   },
   {
     num: "03",
-    title: "牛顿运动定律与动力学应用",
-    group: "mechanics",
-    volume: "必修第一册",
-    volumeTag: "bx1",
-    fileCount: 5,
-    desc: "牛顿三定律、力学单位制、超重失重、板块与传送带动力学模型",
-    focusTitle: "动力学临界极值与板块传送带",
-    focusLink: "/03%20牛顿运动定律与动力学应用/考点%20动力学临界极值与连接体模型",
-    keywords: [
-      "板块模型",
-      "牛顿运动定律",
-      "超重失重判断",
-      "连接体整体隔离法",
-      "传送带动力学",
-      "动力学临界极值",
-    ],
-    link: "/03%20牛顿运动定律与动力学应用/index",
+    title: "名词性从句",
+    group: "syntax",
+    volume: "三大从句",
+    volumeTag: "clause",
+    fileCount: 4,
+    desc: "主语从句与 it 形式主语、表语从句与因果辨析、宾语从句与同位语从句",
+    focusTitle: "that 与 what 在名词性从句中的判定算法",
+    focusLink: "/03%20名词性从句/考点%20that与what在名词性从句中的判定算法",
+    keywords: ["主语从句", "宾语从句", "表语从句", "同位语从句", "that与what", "形式主语it"],
+    link: "/03%20名词性从句/index",
   },
   {
     num: "04",
-    title: "抛体运动与曲线运动",
-    group: "mechanics",
-    volume: "必修第二册",
-    volumeTag: "bx2",
+    title: "状语从句",
+    group: "syntax",
+    volume: "三大从句",
+    volumeTag: "clause",
     fileCount: 4,
-    desc: "曲线运动条件、平抛运动运动学与轨迹方程、斜面平抛解题模型",
-    focusTitle: "平抛运动三大经典解题模型",
-    focusLink: "/04%20抛体运动与曲线运动/考点%20平抛运动三大经典解题模型",
+    desc: "9 大状语从句分类、条件与让步状语从句、状语从句的省略与分词转换",
+    focusTitle: "状语从句的省略与分词转换模型",
+    focusLink: "/04%20状语从句/考点%20状语从句的省略与分词转换",
     keywords: [
-      "曲线运动条件",
-      "运动合成与分解",
-      "小船渡河模型",
-      "平抛独立性规律",
-      "速度与位移偏角",
-      "斜面平抛模型",
+      "时间地点状从",
+      "让步状语从句",
+      "条件状语从句",
+      "从句省略",
+      "分词转换",
+      "虽然但是陷阱",
     ],
-    link: "/04%20抛体运动与曲线运动/index",
+    link: "/04%20状语从句/index",
   },
   {
     num: "05",
-    title: "圆周运动及其应用",
-    group: "mechanics",
-    volume: "必修第二册",
-    volumeTag: "bx2",
-    fileCount: 4,
-    desc: "线速度角速度、向心加速度、轻绳与轻杆竖直圆周临界模型",
-    focusTitle: "竖直圆周轻绳轻杆临界模型",
-    focusLink: "/05%20圆周运动及其应用/考点%20竖直面圆周运动轻绳与轻杆临界模型",
-    keywords: [
-      "线速度与角速度",
-      "向心力与加速度",
-      "圆锥摆模型",
-      "火车转弯外轨超高",
-      "轻绳竖直圆周",
-      "轻杆临界极值",
-    ],
-    link: "/05%20圆周运动及其应用/index",
+    title: "非谓语动词",
+    group: "verb_system",
+    volume: "动词系统",
+    volumeTag: "verb",
+    fileCount: 5,
+    desc: "不定式 to do、现在分词 -ing、过去分词 -ed 句法功能、分词作补足语与 with 复合结构",
+    focusTitle: "非谓语动词解题四步判定算法",
+    focusLink: "/05%20非谓语动词/考点%20非谓语动词解题四步判定算法",
+    keywords: ["不定式todo", "现在分词ing", "过去分词ed", "with复合结构", "逻辑主语", "四步算法"],
+    link: "/05%20非谓语动词/index",
   },
   {
     num: "06",
-    title: "万有引力与宇宙航行",
-    group: "mechanics",
-    volume: "必修第二册",
-    volumeTag: "bx2",
+    title: "动词时态与语态",
+    group: "verb_system",
+    volume: "动词系统",
+    volumeTag: "verb",
     fileCount: 5,
-    desc: "开普勒三定律、万有引力定律、三大宇宙速度、卫星变轨与双星",
-    focusTitle: "卫星变轨追及与双星系统",
-    focusLink: "/06%20万有引力与宇宙航行/考点%20卫星变轨追及相遇与双星模型",
+    desc: "高考核心 8 大时态时间轴、过去完成时、将来进行时与复杂进行/完成被动语态",
+    focusTitle: "谓语动词时态语态双重判定法",
+    focusLink: "/06%20动词时态与语态/考点%20谓语动词时态语态双重判定法",
     keywords: [
-      "万有引力",
-      "双星系统",
-      "开普勒三定律",
-      "黄金代换式",
-      "三大宇宙速度",
-      "卫星变轨追及",
+      "8大核心时态",
+      "时间轴坐标",
+      "过去完成时",
+      "现在完成进行时",
+      "被动语态",
+      "双重判定法",
     ],
-    link: "/06%20万有引力与宇宙航行/index",
+    link: "/06%20动词时态与语态/index",
   },
   {
     num: "07",
-    title: "机械能守恒与功能关系",
-    group: "mechanics",
-    volume: "必修第二册",
-    volumeTag: "bx2",
+    title: "情态动词与虚拟语气",
+    group: "verb_system",
+    volume: "动词系统",
+    volumeTag: "verb",
     fileCount: 5,
-    desc: "功与功率、机车启动、动能定理、机械能守恒定律、摩擦生热",
-    focusTitle: "变力做功与摩擦生热功能综合",
-    focusLink: "/07%20机械能守恒与功能关系/考点%20变力做功计算法与功能关系综合",
+    desc: "情态动词推测用法、情态动词+have done、if 条件句虚拟时态倒退与名词性从句虚拟",
+    focusTitle: "虚拟语气在高考与应用文中的应用",
+    focusLink: "/07%20情态动词与虚拟语气/考点%20虚拟语气在高考与应用文中的应用",
     keywords: [
-      "恒力与变力做功",
-      "机车恒功率启动",
-      "动能定理核心应用",
-      "机械能守恒判据",
-      "功能转化本质",
-      "相对滑动摩擦生热",
+      "情态动词推测",
+      "must have done",
+      "if虚拟条件句",
+      "时态倒退",
+      "should省略",
+      "建议要求命令",
     ],
-    link: "/07%20机械能守恒与功能关系/index",
+    link: "/07%20情态动词与虚拟语气/index",
   },
   {
     num: "08",
-    title: "动量守恒定律与碰撞",
-    group: "mechanics",
-    volume: "选必第一册",
-    volumeTag: "xb1",
+    title: "特殊句式",
+    group: "advanced",
+    volume: "句式拓展",
+    volumeTag: "special",
     fileCount: 5,
-    desc: "动量定理、动量守恒定律、完全弹性/非弹性碰撞、反冲与弹簧振子",
-    focusTitle: "动量与能量综合三大经典模型",
-    focusLink: "/08%20动量守恒定律与碰撞/考点%20动量与能量综合三大经典模型",
-    keywords: [
-      "动量守恒",
-      "碰撞模型",
-      "动量定理应用",
-      "完全弹性碰撞",
-      "完全非弹性碰撞",
-      "人船位移模型",
-      "反冲与喷气动力",
-    ],
-    link: "/08%20动量守恒定律与碰撞/index",
+    desc: "形式主语与形式宾语 it、倒装句（完全/部分倒装）、强调句型判定、省略句与感叹句",
+    focusTitle: "特殊句式在语法填空与写作中的识别",
+    focusLink: "/08%20特殊句式/考点%20特殊句式在语法填空与写作中的识别",
+    keywords: ["形式主宾语it", "部分倒装", "完全倒装", "强调句型", "it is that", "省略句"],
+    link: "/08%20特殊句式/index",
   },
   {
     num: "09",
-    title: "静电场与电能",
-    group: "electromagnetism",
-    volume: "必修第三册",
-    volumeTag: "bx3",
-    fileCount: 6,
-    desc: "库仑定律、场强与电场线、电势能与等势面、匀强电场 U=Ed、电容动态分析",
-    focusTitle: "静电场性质综合与电场图像",
-    focusLink: "/09%20静电场与电能/考点%20静电场性质综合与电场图像模型",
-    keywords: [
-      "静电场性质",
-      "电容器动态",
-      "库仑定律",
-      "等势面与电场线",
-      "电势与电势能",
-      "匀强电场U=Ed",
-      "电容器动态分析",
-    ],
-    link: "/09%20静电场与电能/index",
+    title: "主谓一致与高考常考易错清单",
+    group: "advanced",
+    volume: "句式拓展",
+    volumeTag: "special",
+    fileCount: 4,
+    desc: "语法/意义/就近一致三大原则、代词与数量短语一致、主谓一致四大高频易错陷阱",
+    focusTitle: "主谓一致四大高频易错陷阱",
+    focusLink: "/09%20主谓一致/考点%20主谓一致四大高频易错陷阱",
+    keywords: ["语法一致", "意义一致", "就近原则", "就远原则", "the number of", "主谓陷阱"],
+    link: "/09%20主谓一致/index",
   },
   {
     num: "10",
-    title: "带电粒子在电场中的运动",
-    group: "electromagnetism",
-    volume: "必修第三册",
-    volumeTag: "bx3",
+    title: "高考题型与语法运用",
+    group: "practical",
+    volume: "综合实战",
+    volumeTag: "exam",
     fileCount: 4,
-    desc: "带电粒子在电场中的加速、类平抛偏转轨迹、示波管原理、交变电场运动",
-    focusTitle: "带电粒子在交变电场中偏转",
-    focusLink: "/10%20带电粒子在电场中的运动/考点%20带电粒子在交变电场中的运动模型",
-    keywords: [
-      "电场直线加速",
-      "电场类平抛偏转",
-      "偏转角与侧移量",
-      "示波管偏转原理",
-      "交变方波电场运动",
-    ],
-    link: "/10%20带电粒子在电场中的运动/index",
+    desc: "语法填空解题通法与无提示词考点、读后续写高分句式升级策略、应用文写作核心句型模板",
+    focusTitle: "读后续写高分句式升级策略",
+    focusLink: "/10%20高考题型与语法运用/02%20读后续写高分句式升级策略",
+    keywords: ["语法填空解题", "无提示词考点", "读后续写", "应用文模板", "句式升级", "分词伴随"],
+    link: "/10%20高考题型与语法运用/index",
   },
   {
     num: "11",
-    title: "电路与恒定电流",
-    group: "electromagnetism",
-    volume: "必修第三册",
-    volumeTag: "bx3",
+    title: "外研版高中英语教材知识清单",
+    group: "practical",
+    volume: "教材清单",
+    volumeTag: "textbook",
     fileCount: 5,
-    desc: "电流微观式、电阻定律、电表改装、闭合电路欧姆定律与电源输出极值",
-    focusTitle: "闭合电路动态分析与电源极值",
-    focusLink: "/11%20电路与恒定电流/考点%20闭合电路动态分析与电源输出功率",
-    keywords: [
-      "电流微观表达式",
-      "电阻定律电阻率",
-      "电表改装与校准",
-      "闭合电路欧姆定律",
-      "路端电压U-I图线",
-      "电源最大输出功率",
-    ],
-    link: "/11%20电路与恒定电流/index",
-  },
-  {
-    num: "12",
-    title: "磁场与安培力洛伦兹力",
-    group: "electromagnetism",
-    volume: "选必第二册",
-    volumeTag: "xb2",
-    fileCount: 6,
-    desc: "磁感应强度、安培力与左手定则、洛伦兹力、匀强磁场圆周运动几何轨迹与质谱仪",
-    focusTitle: "磁场回旋圆周几何轨迹解法",
-    focusLink: "/12%20磁场与安培力洛伦兹力/考点%20磁场中圆周运动几何轨迹解题模型",
-    keywords: [
-      "磁感应强度",
-      "安培力与左手定则",
-      "洛伦兹力不作功",
-      "匀强磁场圆周运动",
-      "找圆心定半径算周期",
-      "质谱仪与回旋加速器",
-    ],
-    link: "/12%20磁场与安培力洛伦兹力/index",
-  },
-  {
-    num: "13",
-    title: "电磁感应与综合应用",
-    group: "electromagnetism",
-    volume: "选必第二册",
-    volumeTag: "xb2",
-    fileCount: 4,
-    desc: "楞次定律、法拉第电磁感应定律、动生感生电动势、导轨滑棒力电能量综合",
-    focusTitle: "导轨滑棒动力学与能量综合",
-    focusLink: "/13%20电磁感应与综合应用/考点%20电磁感应导轨滑棒动力学与能量综合",
-    keywords: [
-      "电磁感应",
-      "导轨滑棒",
-      "楞次定律增反减同",
-      "法拉第电磁感应定律",
-      "动生感生电动势",
-      "单棒导轨收尾平衡",
-      "双棒与电容导轨系统",
-    ],
-    link: "/13%20电磁感应与综合应用/index",
-  },
-  {
-    num: "14",
-    title: "交变电流与电磁波",
-    group: "electromagnetism",
-    volume: "选必第二册",
-    volumeTag: "xb2",
-    fileCount: 5,
-    desc: "正弦交变电流四值、理想变压器规律、远距离高压输电、电磁振荡与传感器",
-    focusTitle: "变压器动态分析与等效电阻",
-    focusLink: "/14%20交变电流与电磁波/考点%20变压器动态分析与等效电阻模型",
-    keywords: [
-      "交变电流",
-      "理想变压器",
-      "正弦交流电产生",
-      "理想变压器变比",
-      "远距离高压输电",
-      "LC电磁振荡周期",
-      "麦克斯韦电磁场理论",
-    ],
-    link: "/14%20交变电流与电磁波/index",
-  },
-  {
-    num: "15",
-    title: "机械振动与机械波",
-    group: "waves_modern",
-    volume: "选必第一册",
-    volumeTag: "xb1",
-    fileCount: 6,
-    desc: "简谐运动回复力与能量、单摆与共振、机械波图像与振动图像互化",
-    focusTitle: "振动图像与波动图像互化综合",
-    focusLink: "/15%20机械振动与机械波/考点%20振动图像与波动图像的综合求解",
-    keywords: [
-      "简谐运动回复力",
-      "单摆周期公式",
-      "受迫振动与共振",
-      "横波波速波长周期",
-      "波动图像振动图像互化",
-      "波的干涉衍射多普勒",
-    ],
-    link: "/15%20机械振动与机械波/index",
-  },
-  {
-    num: "16",
-    title: "光学",
-    group: "waves_modern",
-    volume: "选必第一册",
-    volumeTag: "xb1",
-    fileCount: 5,
-    desc: "折射率与全反射、杨氏双缝干涉、薄膜干涉、衍射偏振与激光技术",
-    focusTitle: "几何光学光路全反射综合计算",
-    focusLink: "/16%20光学/考点%20几何光学光路全反射综合计算",
-    keywords: [
-      "几何光学",
-      "双缝干涉",
-      "折射定律与折射率",
-      "全反射临界角条件",
-      "光的色散与棱镜",
-      "薄膜干涉增透膜",
-      "光的偏振与激光特性",
-    ],
-    link: "/16%20光学/index",
-  },
-  {
-    num: "17",
-    title: "热学与分子动理论",
-    group: "waves_modern",
-    volume: "选必第三册",
-    volumeTag: "xb3",
-    fileCount: 5,
-    desc: "分子动理论微观量估算、气体实验三定律与理想气体状态方程、热力学定律",
-    focusTitle: "封闭气体压强与活塞气缸循环",
-    focusLink: "/17%20热学与分子动理论/考点%20封闭气体压强计算与活塞气缸热力学循环",
-    keywords: [
-      "阿伏加德罗常数微观估算",
-      "分子力与分子势能曲线",
-      "气体实验三定律",
-      "理想气体状态方程",
-      "气体状态变化图像",
-      "热力学第一第二定律",
-    ],
-    link: "/17%20热学与分子动理论/index",
-  },
-  {
-    num: "18",
-    title: "原子物理与近代物理",
-    group: "waves_modern",
-    volume: "选必第三册",
-    volumeTag: "xb3",
-    fileCount: 5,
-    desc: "黑体辐射与光电效应光子说、玻尔氢原子跃迁、衰变半衰期与结合能质能方程",
-    focusTitle: "光电效应图像与核能质能计算",
-    focusLink: "/18%20原子物理与近代物理/考点%20光电效应图像分析与核能计算模型",
-    keywords: [
-      "近代物理",
-      "光电效应",
-      "普朗克能量子假说",
-      "光电效应与光电方程",
-      "玻尔氢原子能级跃迁",
-      "半衰期计算公式",
-      "结合能与质能方程",
-    ],
-    link: "/18%20原子物理与近代物理/index",
-  },
-  {
-    num: "19",
-    title: "物理实验专题",
-    group: "experiments",
-    volume: "实验专题",
-    volumeTag: "exp",
-    fileCount: 5,
-    desc: "游标卡尺螺旋测微器读数、打点计时器力学验证、伏安法电表内外接分压限流设计与误差分析",
-    focusTitle: "电学器材选择与控制电路设计",
-    focusLink: "/19%20物理实验专题/考点%20电学实验器材选择与控制电路设计",
-    keywords: [
-      "物理实验",
-      "电学实验",
-      "力学实验",
-      "仪器读数规范",
-      "游标卡尺螺旋测微器",
-      "打点计时器加速度逐差",
-      "伏安法测电阻内外接",
-      "滑动变阻器分压限流",
-      "测定电源电动势内阻",
-    ],
-    link: "/19%20物理实验专题/index",
+    desc: "外研版必修 3 册与选择性必修 4 册共 42 单元 Using language 清单、高频词块与考点迁移",
+    focusTitle: "教材知识在高考读后续写与语法填空中的迁移",
+    focusLink: "/11%20外研版高中英语教材知识清单/考点%20教材知识在高考读后续写与语法填空中的迁移",
+    keywords: ["外研版全7册", "42单元Using language", "词块搭配", "考点迁移", "必修1-3", "选必1-4"],
+    link: "/11%20外研版高中英语教材知识清单/index",
   },
 ];
 
 const specialCards: SpecialItem[] = [
   {
-    title: "50 大黄金结论与临界条件",
-    badge: "秒杀定理矩阵",
+    title: "50 大核心句法公式与速记",
+    badge: "核心句法矩阵",
     tagClass: "yellow",
-    desc: "聚合力学、天体、电磁、近代物理高频临界判据、代换式与速算模型，高考考前压轴提分利器。",
+    desc: "聚合简单句、三大从句、非谓语动词、虚拟语气与高考高频语法判定法则，考前速查提分利器。",
     link: "/golden-conclusions",
-    actionText: "速查结论",
+    actionText: "速查公式",
     iconSvg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
   },
   {
-    title: "全专题防踩坑排雷白皮书",
+    title: "全专题语法防踩坑排雷清单",
     badge: "考前避坑指南",
     tagClass: "red",
-    desc: "系统梳理 19 大专题易错陷阱、公式适用边界条件与审题雷区，考前 1 小时速通排雷。",
+    desc: "系统梳理 12 大专题常考易错语法陷阱、时态混淆、从句连接词误用与短文改错避坑清单。",
     link: "/warning-cheatsheet",
     actionText: "查阅排雷",
     iconSvg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
   },
   {
-    title: "高考物理可视化交互空间",
-    badge: "动态物理仿真",
+    title: "外研版全七册 42 单元知识清单",
+    badge: "教材核心归纳",
     tagClass: "blue",
-    desc: "微元积分、平抛轨迹合成、斜面受力分解、磁场回旋等 6 大核心模型动态仿真，直观物理直通考场。",
-    link: "/interactive",
-    actionText: "进入空间",
-    iconSvg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m3.6 9 16.8 6"/><path d="m3.6 15 16.8-6"/></svg>`,
+    desc: "外研版必修 3 册与选择性必修 4 册共 42 单元 Using language 与语法核心例句全景汇总。",
+    link: "/11%20外研版高中英语教材知识清单/01%20必修全三册Using%20language知识清单",
+    actionText: "查看清单",
+    iconSvg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="9" y1="7" x2="16" y2="7"/><line x1="9" y1="11" x2="14" y2="11"/></svg>`,
   },
 ];
 
 // 高频热门搜索词推荐
 const hotSearchKeywords = [
-  "板块模型",
-  "平抛运动",
-  "双星系统",
-  "动量守恒",
-  "电容器动态",
-  "导轨滑棒",
-  "理想变压器",
-  "双缝干涉",
-  "电学实验",
+  "非谓语动词",
+  "定语从句",
+  "that与what判定",
+  "虚拟语气",
+  "强调句型",
+  "倒装句",
+  "主谓一致",
+  "读后续写动作链",
+  "Using language",
 ];
 
 // 交互状态
@@ -478,21 +259,22 @@ const activeVolume = ref<string>("all");
 
 // 分组配置与计数值
 const groupTabs = [
-  { key: "all", label: "全部专题", count: 19 },
-  { key: "mechanics", label: "经典力学", count: 8 },
-  { key: "electromagnetism", label: "电磁学", count: 6 },
-  { key: "waves_modern", label: "波·光·热·原", count: 4 },
-  { key: "experiments", label: "实验专题", count: 1 },
+  { key: "all", label: "全部专题", count: 12 },
+  { key: "syntax", label: "句法与三大从句", count: 4 },
+  { key: "verb_system", label: "动词核心系统", count: 3 },
+  { key: "advanced", label: "句式拓展与一致", count: 2 },
+  { key: "practical", label: "教材清单与实战", count: 2 },
+  { key: "intro", label: "导读说明", count: 1 },
 ];
 
 const volumeTabs = [
-  { key: "all", label: "全部教材" },
-  { key: "bx1", label: "必修一 (01-03)" },
-  { key: "bx2", label: "必修二 (04-07)" },
-  { key: "bx3", label: "必修三 (09-11)" },
-  { key: "xb1", label: "选必一 (08, 15, 16)" },
-  { key: "xb2", label: "选必二 (12-14)" },
-  { key: "xb3", label: "选必三 (17, 18)" },
+  { key: "all", label: "全部模块" },
+  { key: "syntax", label: "句法基础 (01)" },
+  { key: "clause", label: "三大从句 (02-04)" },
+  { key: "verb", label: "动词系统 (05-07)" },
+  { key: "special", label: "句式拓展 (08-09)" },
+  { key: "exam", label: "综合实战 (10)" },
+  { key: "textbook", label: "教材清单 (11)" },
 ];
 
 const setGroup = (key: string) => {
@@ -587,18 +369,18 @@ const filteredChapters = computed(() => {
 });
 
 const regularChapters = computed(() => {
-  return filteredChapters.value.filter((ch) => ch.num !== "19");
+  return filteredChapters.value.filter((ch) => ch.num !== "11");
 });
 
-const experimentChapter = computed(() => {
-  return filteredChapters.value.find((ch) => ch.num === "19");
+const textbookChapter = computed(() => {
+  return filteredChapters.value.find((ch) => ch.num === "11");
 });
 </script>
 
 <template>
   <div class="ci-master-container">
     <!-- ============================================================
-         1. Master Index Hero Header (顶级学术总索引巨幕)
+         1. Master Index Hero Header (英语语法总索引巨幕)
          ============================================================ -->
     <header class="ci-hero-section">
       <div class="ci-hero-aura" aria-hidden="true" />
@@ -606,21 +388,26 @@ const experimentChapter = computed(() => {
       <!-- 顶部发布胶囊 -->
       <div class="ci-pill-badge">
         <span class="ci-pill-dot" aria-hidden="true" />
-        <span class="ci-pill-text">人教版新课标 6 册教材深度重构 · 2026 高考物理知识库</span>
+        <span class="ci-pill-text"
+          >外研版全七册 42 单元 Using language 重构 · 2026 高考英语知识库</span
+        >
         <span class="ci-pill-arrow">→</span>
       </div>
 
       <!-- 宏大主标题 -->
       <h1 class="ci-hero-title">
-        <span class="ci-hero-title-main">高考物理知识库</span>
-        <span class="ci-hero-title-tag">Yulaoshizuikeai's Physics Note</span>
+        <span class="ci-hero-title-main">高考英语语法知识库</span>
+        <span class="ci-hero-title-tag">Yulaoshizuikeai's English Note</span>
       </h1>
 
       <!-- 核心定位导言 -->
       <p class="ci-hero-tagline">
-        融合中国普通高中物理教科书（人教版必修 1-3 与选必 1-3 全套 6 册）与可汗学院直观微元思维。
-        涵盖 <strong>19 大体系板块</strong>、<strong>78 幅自研高清矢量图解</strong> 与
-        <strong>50 大黄金临界模型</strong>，助你建立完整清晰的物理图景，告别题海死记硬背。
+        基于中国普通高中英语教科书（外研版必修 1-3 与选择性必修 1-4 全套 7
+        册及人教版新课标教材）与高考英语评价体系。 涵盖 <strong>12 大体系专题</strong>、<strong
+          >42 单元 Using language 知识清单</strong
+        >
+        与
+        <strong>50 大核心句法判定公式</strong>，助你建立清晰的英语句法结构认知，告别题海死记硬背。
       </p>
 
       <!-- 核心快捷入口按钮组 -->
@@ -652,7 +439,7 @@ const experimentChapter = computed(() => {
               points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
             />
           </svg>
-          <span>50 大黄金结论速查</span>
+          <span>50 大核心句法公式</span>
         </a>
 
         <a :href="withBase('/warning-cheatsheet')" class="ci-btn ci-btn-ghost">
@@ -667,10 +454,15 @@ const experimentChapter = computed(() => {
             <line x1="12" y1="9" x2="12" y2="13" />
             <line x1="12" y1="17" x2="12.01" y2="17" />
           </svg>
-          <span>防踩坑排雷</span>
+          <span>语法避坑清单</span>
         </a>
 
-        <a :href="withBase('/interactive')" class="ci-btn ci-btn-ghost">
+        <a
+          :href="
+            withBase('/11%20外研版高中英语教材知识清单/01%20必修全三册Using%20language知识清单')
+          "
+          class="ci-btn ci-btn-ghost"
+        >
           <svg
             class="ci-btn-icon"
             viewBox="0 0 24 24"
@@ -678,29 +470,30 @@ const experimentChapter = computed(() => {
             stroke="currentColor"
             stroke-width="2"
           >
-            <circle cx="12" cy="12" r="9" />
-            <path d="m3.6 9 16.8 6" />
-            <path d="m3.6 15 16.8-6" />
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+            <line x1="9" y1="7" x2="16" y2="7" />
+            <line x1="9" y1="11" x2="14" y2="11" />
           </svg>
-          <span>交互空间</span>
+          <span>教材知识清单</span>
         </a>
       </div>
 
       <!-- 极简通透数据指标条 -->
       <div class="ci-stats-strip">
         <div class="ci-stat-col">
-          <div class="ci-stat-number">19</div>
+          <div class="ci-stat-number">12</div>
           <div class="ci-stat-title">大体系专题板块</div>
         </div>
         <div class="ci-stat-divider" aria-hidden="true" />
         <div class="ci-stat-col">
-          <div class="ci-stat-number">78</div>
-          <div class="ci-stat-title">幅自研矢量图解</div>
+          <div class="ci-stat-number">42</div>
+          <div class="ci-stat-title">单元教材清单归纳</div>
         </div>
         <div class="ci-stat-divider" aria-hidden="true" />
         <div class="ci-stat-col">
           <div class="ci-stat-number">50</div>
-          <div class="ci-stat-title">大黄金临界模型</div>
+          <div class="ci-stat-title">大核心句法公式</div>
         </div>
         <div class="ci-stat-divider" aria-hidden="true" />
         <div class="ci-stat-col">
@@ -718,7 +511,7 @@ const experimentChapter = computed(() => {
     </header>
 
     <!-- ============================================================
-         2. Quick Chapter Directory (全新优化快捷章节索引系统)
+         2. Quick Chapter Directory (快捷章节索引系统)
          ============================================================ -->
     <section id="chapter-directory" class="ci-directory-section">
       <!-- 索引区域标题与说明 -->
@@ -731,19 +524,19 @@ const experimentChapter = computed(() => {
           <h2 class="ci-directory-title">快捷章节索引</h2>
           <p class="ci-directory-sub">
             点击章节标题进入全景概览，或点击卡片内
-            <strong>【🔥 压轴考点直达】</strong> 快速攻克典型题型模型。
+            <strong>【🔥 核心考点直达】</strong> 快速攻克典型题型规则。
           </p>
         </div>
         <div class="ci-head-count">
           <span
-            >匹配 <strong class="ci-highlight">{{ filteredChapters.length }}</strong> / 19
+            >匹配 <strong class="ci-highlight">{{ filteredChapters.length }}</strong> / 12
             个专题</span
           >
           <button
             v-if="searchQuery || activeGroup !== 'all' || activeVolume !== 'all'"
             type="button"
             class="ci-reset-pill"
-            title="还原为展示全部 19 个专题"
+            title="还原为展示全部 12 个专题"
             @click="clearFilters"
           >
             重置筛选
@@ -764,7 +557,7 @@ const experimentChapter = computed(() => {
             v-model="searchQuery"
             type="text"
             class="ci-search-input"
-            placeholder="检索章节、模型或关键词（按 / 激活，按 Esc 清空）..."
+            placeholder="检索章节、从句或语法关键词（按 / 激活，按 Esc 清空）..."
             aria-label="快速检索章节"
           />
           <div class="ci-search-actions">
@@ -800,9 +593,9 @@ const experimentChapter = computed(() => {
 
         <!-- 体系与教材分类控制器 -->
         <div class="ci-filters-container">
-          <!-- 学科体系主标签 -->
+          <!-- 知识板块主标签 -->
           <div class="ci-filter-row">
-            <div class="ci-filter-label">知识体系:</div>
+            <div class="ci-filter-label">知识板块:</div>
             <div class="ci-filter-tabs">
               <button
                 v-for="tab in groupTabs"
@@ -818,9 +611,9 @@ const experimentChapter = computed(() => {
             </div>
           </div>
 
-          <!-- 教材版本细筛标签 -->
+          <!-- 分类细筛标签 -->
           <div class="ci-filter-row ci-filter-row--sub">
-            <div class="ci-filter-label">人教教材:</div>
+            <div class="ci-filter-label">分类筛选:</div>
             <div class="ci-filter-pills">
               <button
                 v-for="v in volumeTabs"
@@ -906,93 +699,110 @@ const experimentChapter = computed(() => {
           </div>
         </div>
 
-        <!-- 19 物理实验专题：全景通栏核心卡片 (提供 5 大实验文章直接导航) -->
-        <div v-if="experimentChapter" class="ci-pano-wrap">
+        <!-- 11 外研版高中英语教材知识清单：全景通栏核心卡片 (提供 4 大知识清单直接导航) -->
+        <div v-if="textbookChapter" class="ci-pano-wrap">
           <div class="ci-chapter-card ci-chapter-card--pano">
             <div class="ci-pano-grid">
               <!-- 左侧主信息 -->
               <div class="ci-pano-main">
                 <div class="ci-card-header">
                   <div class="ci-pano-header-left">
-                    <span class="ci-card-num ci-card-num--pano">{{ experimentChapter.num }}</span>
-                    <span class="ci-card-vol-badge vol-exp">高考压轴实验专题</span>
+                    <span class="ci-card-num ci-card-num--pano">{{ textbookChapter.num }}</span>
+                    <span class="ci-card-vol-badge vol-textbook">全七册教材知识清单</span>
                   </div>
-                  <span class="ci-pano-indicator">全面攻克 15 分主观实验题</span>
+                  <span class="ci-pano-indicator">外研版 42 单元 Using language 完整覆盖</span>
                 </div>
 
                 <h3 class="ci-card-title ci-card-title--pano">
-                  <a :href="withBase(experimentChapter.link)" class="ci-title-link">
-                    {{ experimentChapter.title }}与科学探究
+                  <a :href="withBase(textbookChapter.link)" class="ci-title-link">
+                    {{ textbookChapter.title }}与考点迁移
                   </a>
                 </h3>
 
                 <p class="ci-card-desc ci-card-desc--pano">
-                  涵盖高中阶段基本仪器读数规范、经典力学验证探究实验与伏安法电表内外接分压限流设计，全景拆解误差来源与实战得分要领。
+                  提取外研版必修 1-3 与选择性必修 1-4 全套 7 册 42 单元 Using language
+                  重点句式、语法清单与高频词块，全景拆解在高考读后续写与语法填空中的迁移要领。
                 </p>
 
-                <!-- 实验压轴考点直达 -->
+                <!-- 考点直达 -->
                 <a
-                  :href="withBase(experimentChapter.focusLink)"
+                  :href="withBase(textbookChapter.focusLink)"
                   class="ci-focus-jump ci-focus-jump--pano"
-                  title="直接研读实验压轴模型"
+                  title="直接研读教材考点迁移"
                 >
-                  <span class="ci-focus-tag">🔥 压轴设计</span>
-                  <span class="ci-focus-title">{{ experimentChapter.focusTitle }}</span>
+                  <span class="ci-focus-tag">🔥 考点迁移</span>
+                  <span class="ci-focus-title">{{ textbookChapter.focusTitle }}</span>
                   <span class="ci-focus-arrow">→</span>
                 </a>
 
                 <div class="ci-card-footer ci-card-footer--pano">
-                  <a :href="withBase(experimentChapter.link)" class="ci-card-action">
-                    <span>研读实验完整体系与误差分析 →</span>
+                  <a :href="withBase(textbookChapter.link)" class="ci-card-action">
+                    <span>研读外研版全套 42 单元教材清单 →</span>
                   </a>
                 </div>
               </div>
 
-              <!-- 右侧实验板块直达导航 -->
+              <!-- 右侧教材清单板块直达导航 -->
               <div class="ci-pano-subtopics">
                 <a
-                  :href="withBase('/19%20物理实验专题/01%20基本仪器使用与读数规范')"
+                  :href="
+                    withBase(
+                      '/11%20外研版高中英语教材知识清单/01%20必修全三册Using%20language知识清单',
+                    )
+                  "
                   class="ci-pano-subcard"
                 >
                   <div class="ci-subcard-title">
                     <span class="ci-subcard-bullet bullet-blue" />
-                    仪器使用与读数规范
+                    必修全三册 Using language 清单
                   </div>
                   <p class="ci-subcard-desc">
-                    游标卡尺(无估读)、螺旋测微器(千分尺估读)、秒表与打点计时器
-                  </p>
-                </a>
-
-                <a :href="withBase('/19%20物理实验专题/02%20力学核心实验')" class="ci-pano-subcard">
-                  <div class="ci-subcard-title">
-                    <span class="ci-subcard-bullet bullet-green" />
-                    力学核心验证实验
-                  </div>
-                  <p class="ci-subcard-desc">
-                    探究加速度与力/质量、验证机械能守恒、动量守恒频闪与光电门
-                  </p>
-                </a>
-
-                <a :href="withBase('/19%20物理实验专题/03%20电学核心实验')" class="ci-pano-subcard">
-                  <div class="ci-subcard-title">
-                    <span class="ci-subcard-bullet bullet-purple" />
-                    电学测量与电路设计
-                  </div>
-                  <p class="ci-subcard-desc">
-                    伏安法内外接判据、滑动变阻器分压限流选择、测定电源电动势与内阻
+                    必修 1-3 共 18 单元，涵盖基本句型、现在完成时、动名词与从句初阶
                   </p>
                 </a>
 
                 <a
-                  :href="withBase('/19%20物理实验专题/04%20光学与热学实验')"
+                  :href="
+                    withBase(
+                      '/11%20外研版高中英语教材知识清单/02%20选择性必修全四册Using%20language知识清单',
+                    )
+                  "
+                  class="ci-pano-subcard"
+                >
+                  <div class="ci-subcard-title">
+                    <span class="ci-subcard-bullet bullet-green" />
+                    选择性必修全四册清单
+                  </div>
+                  <p class="ci-subcard-desc">
+                    选必 1-4 共 24 单元，涵盖非谓语进阶、虚拟语气、倒装与复杂句式
+                  </p>
+                </a>
+
+                <a
+                  :href="withBase('/11%20外研版高中英语教材知识清单/03%20高频词块与固定搭配清单')"
+                  class="ci-pano-subcard"
+                >
+                  <div class="ci-subcard-title">
+                    <span class="ci-subcard-bullet bullet-purple" />
+                    高频词块与固定搭配清单
+                  </div>
+                  <p class="ci-subcard-desc">动词搭配、介词短语、读后续写情绪与动作高频词块汇总</p>
+                </a>
+
+                <a
+                  :href="
+                    withBase(
+                      '/11%20外研版高中英语教材知识清单/考点%20教材知识在高考读后续写与语法填空中的迁移',
+                    )
+                  "
                   class="ci-pano-subcard"
                 >
                   <div class="ci-subcard-title">
                     <span class="ci-subcard-bullet bullet-orange" />
-                    光学与热学探究实验
+                    教材知识高考迁移通法
                   </div>
                   <p class="ci-subcard-desc">
-                    双缝干涉测波长、玻璃砖折射率测定、油膜法估测分子大小
+                    教材原句提炼为写作亮眼句式，语法填空高频无提示词考点解密
                   </p>
                 </a>
               </div>
@@ -1004,7 +814,7 @@ const experimentChapter = computed(() => {
       <!-- 无搜索结果时友好回退 -->
       <div v-else class="ci-empty-state">
         <div class="ci-empty-icon">🔍</div>
-        <h4 class="ci-empty-title">未找到匹配的物理章节</h4>
+        <h4 class="ci-empty-title">未找到匹配的语法章节</h4>
         <p class="ci-empty-desc">
           没有与 “{{ searchQuery }}” 相关的知识板块，请尝试换一个关键词或重置筛选。
         </p>
@@ -1714,26 +1524,46 @@ const experimentChapter = computed(() => {
   border: 1px solid var(--vp-c-border);
 }
 
-.vol-bx1,
-.vol-bx2,
-.vol-bx3 {
+.vol-guide {
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+  border-color: var(--vp-c-border);
+}
+
+.vol-syntax {
   background: var(--vp-pastel-blue);
   color: var(--vp-pastel-blue-text);
   border-color: var(--vp-pastel-blue-border);
 }
 
-.vol-xb1,
-.vol-xb2,
-.vol-xb3 {
+.vol-clause {
   background: var(--vp-pastel-purple);
   color: var(--vp-pastel-purple-text);
   border-color: var(--vp-pastel-purple-border);
 }
 
-.vol-exp {
+.vol-verb {
+  background: var(--vp-pastel-green);
+  color: var(--vp-pastel-green-text);
+  border-color: var(--vp-pastel-green-border);
+}
+
+.vol-special {
   background: var(--vp-pastel-yellow);
   color: var(--vp-pastel-yellow-text);
   border-color: var(--vp-pastel-yellow-border);
+}
+
+.vol-exam {
+  background: var(--vp-pastel-red);
+  color: var(--vp-pastel-red-text);
+  border-color: var(--vp-pastel-red-border);
+}
+
+.vol-textbook {
+  background: color-mix(in srgb, var(--vp-c-brand-1) 12%, transparent);
+  color: var(--vp-c-brand-1);
+  border-color: color-mix(in srgb, var(--vp-c-brand-1) 30%, transparent);
 }
 
 .ci-card-meta {

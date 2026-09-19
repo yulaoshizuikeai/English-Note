@@ -14,7 +14,7 @@ const contentRoot = path.resolve(configDir, "..");
 const siteUrl = "https://english.yunet.cfd";
 const siteName = "高考英语语法知识库 - Yulaoshizuikeai's English Note";
 const defaultDescription =
-  "免费高中英语语法知识库与高考复习指南，覆盖运动学、动力学、圆周与万有引力、机械能与动量、静电场与恒定电流、磁场与电磁感应、交变电流、振动与光、热学、近代物理及物理实验等核心板块，结合人教版教材与可汗学院直观思维，适合高中同步学习与高考复习。";
+  "高中英语语法知识库与高考复习指南，全面覆盖简单句结构、三大从句体系、非谓语动词、动词时态语态、情态与虚拟语气、特殊句式、主谓一致、题型实战以及外研版全七册42单元Using language教材知识清单，助力高考英语提分与句法建构。";
 const navItems = buildNavItems(contentRoot);
 const sidebarItems = buildSidebarItems(contentRoot);
 
@@ -46,7 +46,7 @@ export default defineConfig({
       {
         name: "keywords",
         content:
-          "高考物理知识库,高中物理知识库,高考物理,高中物理,物理知识库,物理模型,动力学,圆周运动,万有引力,动量守恒,电磁感应,变压器,光电效应,微元法,可汗学院,Yulaoshizuikeai",
+          "高考英语知识库,高中英语语法,英语语法知识库,外研版英语,Using language,定语从句,名词性从句,状语从句,非谓语动词,虚拟语气,倒装句,语法填空,读后续写,高考英语,Yulaoshizuikeai",
       },
     ],
     ["meta", { name: "theme-color", content: "#4F46E5" }],

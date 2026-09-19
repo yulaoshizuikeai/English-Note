@@ -14,30 +14,30 @@ onBeforeUnmount(() => {
 });
 
 const pageTitle = computed(() => {
-  return page.value.title || "物理专题考点";
+  return page.value.title || "英语语法考点";
 });
 
 const pageUrl = computed(() => {
   if (typeof window !== "undefined") {
     return window.location.href;
   }
-  return `https://physics.yunet.cfd${route.path}`;
+  return `https://english.yunet.cfd${route.path}`;
 });
 
 const mailtoUrl = computed(() => {
   const title = pageTitle.value;
   const url = pageUrl.value;
-  const subject = encodeURIComponent(`【高考物理知识库勘误反馈】《${title}》`);
+  const subject = encodeURIComponent(`【高考英语语法知识库勘误反馈】《${title}》`);
   const body = encodeURIComponent(
     `Hi Yulaoshizuikeai:\n\n我在阅读《${title}》时发现以下错漏或疑问，特此提交勘误反馈：\n\n` +
       `【勘误页面】：${title}\n` +
       `【页面链接】：${url}\n` +
-      `【问题类型】：[公式推导错误 / 概念歧义 / 错别字 / 图解错误 / 遗漏补充 / 其他]\n` +
-      `【所在位置】：（例如：第X节、某公式附近或某题解处）\n` +
+      `【问题类型】：[语法规则错误 / 例句瑕疵 / 错别字 / 解析歧义 / 遗漏补充 / 其他]\n` +
+      `【所在位置】：（例如：第X节、某例句或考点处）\n` +
       `【原文内容】：\n\n` +
       `【建议修改】：\n\n` +
-      `【推导依据 / 参考资料】：\n\n` +
-      `---\n（感谢您对高考物理知识库的指正与支持！）`,
+      `【参考依据 / 语法书权威出处】：\n\n` +
+      `---\n（感谢您对高考英语语法知识库的指正与支持！）`,
   );
   return `mailto:imharlanyu@gmail.com?subject=${subject}&body=${body}`;
 });
@@ -47,14 +47,14 @@ const copyTemplate = async () => {
   const url = pageUrl.value;
   const text =
     `收件人：imharlanyu@gmail.com\n` +
-    `邮件主题：【高考物理知识库勘误反馈】《${title}》\n\n` +
+    `邮件主题：【高考英语语法知识库勘误反馈】《${title}》\n\n` +
     `【勘误页面】：${title}\n` +
     `【页面链接】：${url}\n` +
-    `【问题类型】：[公式推导错误 / 概念歧义 / 错别字 / 图解错误 / 遗漏补充 / 其他]\n` +
-    `【所在位置】：（例如：第X节、某公式附近或某题解处）\n` +
+    `【问题类型】：[语法规则错误 / 例句瑕疵 / 错别字 / 解析歧义 / 遗漏补充 / 其他]\n` +
+    `【所在位置】：（例如：第X节、某例句或考点处）\n` +
     `【原文内容】：\n\n` +
     `【建议修改】：\n\n` +
-    `【推导依据 / 参考资料】：\n`;
+    `【参考依据 / 语法书权威出处】：\n`;
 
   const flashSuccess = () => {
     copySuccess.value = true;
@@ -119,7 +119,7 @@ const copyTemplate = async () => {
           <span class="cc-errata__badge">读者勘误</span>
         </div>
         <p class="cc-errata__desc">
-          高考物理知识库持续校对更新中。若您在公式推导、物理图解或文字中发现笔误，欢迎通过邮件直接反馈，我们将第一时间核实并修订。
+          高考英语语法知识库持续校对更新中。若您在语法规则、例句解析或文字中发现笔误，欢迎通过邮件直接反馈，我们将第一时间核实并修订。
         </p>
       </div>
     </div>

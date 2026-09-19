@@ -28,7 +28,7 @@ description: 高考英语高频语法易错点与典型混淆陷阱汇总
 5. **表语从句混用 reason 和 because**：
    - 严格禁止书写 *The reason is because...*，标准语法必须写为 *The reason is that...*。
 6. **疑问词引导的名词性从句误用疑问语序**：
-   - 无论主语从句、宾语从句还是表语从句，从句语序必须是**陈述语序（引导词 + 主语 + 谓语）**，不得写成疑问句语序（如 *where did he go* $	o$ *where he went*）。
+   - 无论主语从句、宾语从句还是表语从句，从句语序必须是**陈述语序（引导词 + 主语 + 谓语）**，不得写成疑问句语序（如 *where did he go* → *where he went*）。
 
 ---
 

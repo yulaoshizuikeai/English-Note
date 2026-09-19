@@ -68,7 +68,7 @@ const formatDateKey = (date: Date): string => {
 onMounted(() => {
   // 7天滚动窗口周期数据计算 (Sliding Window: 过去6天 + 今天)
   try {
-    const STORAGE_KEY = "cc_physics_7d_window";
+    const STORAGE_KEY = "cc_english_7d_window";
     const raw = localStorage.getItem(STORAGE_KEY);
     const store: Record<string, number> = raw ? JSON.parse(raw) : {};
 
@@ -147,9 +147,9 @@ onMounted(() => {
             y2="50"
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset="0%" stop-color="#5672CD" stop-opacity="0.32" />
-            <stop offset="65%" stop-color="#38bdf8" stop-opacity="0.08" />
-            <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+            <stop offset="0%" stop-color="#4f46e5" stop-opacity="0.32" />
+            <stop offset="65%" stop-color="#818cf8" stop-opacity="0.08" />
+            <stop offset="100%" stop-color="#818cf8" stop-opacity="0" />
           </linearGradient>
 
           <!-- 7日周期折线流光渐变 -->
@@ -161,10 +161,10 @@ onMounted(() => {
             y2="25"
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset="0%" stop-color="#5672CD" stop-opacity="0.55" />
-            <stop offset="40%" stop-color="#38bdf8" />
+            <stop offset="0%" stop-color="#4f46e5" stop-opacity="0.65" />
+            <stop offset="40%" stop-color="#6366f1" />
             <stop offset="80%" stop-color="#818cf8" />
-            <stop offset="100%" stop-color="#60a5fa" />
+            <stop offset="100%" stop-color="#a5b4fc" />
           </linearGradient>
 
           <!-- 辉光滤镜 -->
@@ -196,7 +196,7 @@ onMounted(() => {
             :cx="pt.x"
             :cy="pt.y"
             :r="pt.isToday ? 3.2 : 2"
-            :fill="pt.isToday ? '#ffffff' : '#38bdf8'"
+            :fill="pt.isToday ? '#ffffff' : '#818cf8'"
             :opacity="pt.isToday ? 1 : 0.4"
             class="cycle-node"
           />
@@ -208,7 +208,7 @@ onMounted(() => {
             :cx="points[points.length - 1].x"
             :cy="points[points.length - 1].y"
             r="7.5"
-            fill="#38bdf8"
+            fill="#6366f1"
             opacity="0.28"
             class="beacon-halo"
             :style="`transform-origin: ${points[points.length - 1].x}px ${points[points.length - 1].y}px`"
@@ -243,8 +243,8 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   padding: 8px 14px 10px;
-  background: color-mix(in srgb, var(--vp-c-brand-1, #5672cd) 5%, transparent);
-  border: 1px solid color-mix(in srgb, var(--vp-c-brand-1, #5672cd) 16%, transparent);
+  background: color-mix(in srgb, var(--vp-c-brand-1, #4f46e5) 5%, transparent);
+  border: 1px solid color-mix(in srgb, var(--vp-c-brand-1, #4f46e5) 16%, transparent);
   border-radius: 18px;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);

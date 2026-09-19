@@ -1,52 +1,110 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 
-interface PhysicsFlash {
+interface GrammarFlash {
   text: string;
   tag: string;
 }
 
-// 精选高中物理核心速记与解题模型（每条控制在十几字，2~3 秒读完）
-const PHYSICS_FLASHES: PhysicsFlash[] = [
-  { text: "v-t 图像斜率是加速度，面积是位移。", tag: "运动学" },
-  { text: "加速度为零时速度达极值；速度为零时加速度不一定为零。", tag: "运动学" },
-  { text: "受力分析先重力，次弹力，后摩擦，再外力。", tag: "受力平衡" },
-  { text: "滑动摩擦力只由正压力与摩擦因数决定，与相对速度无关。", tag: "相互作用" },
-  { text: "超重时加速度向上，失重时加速度向下，重力本身从未改变。", tag: "牛顿定律" },
-  { text: "平抛运动水平与竖直互不干扰，下落时间由下落高度唯一决定。", tag: "抛体运动" },
-  { text: "轻绳竖直圆周最高点临界速度为 √(gR)，轻杆则可为 0。", tag: "圆周模型" },
-  { text: "万有引力充当向心力：高轨低速大周期，低轨高速小周期。", tag: "天体引力" },
-  { text: "双星系统公转角速度相等，轨道半径与天体质量成反比。", tag: "双星模型" },
-  { text: "合外力做功等于动能变化，重力做功等于重力势能减少。", tag: "功能关系" },
-  { text: "机械能守恒看非重力弹力，动量守恒看系统合外力。", tag: "守恒定律" },
-  { text: "完全弹性碰撞动能无损，完全非弹性碰撞动能损失最大。", tag: "碰撞模型" },
-  { text: "静电平衡导体内部场强处处为零，整个导体是等势体。", tag: "静电场" },
-  { text: "沿电场线方向电势一定降低，电场线密集处场强更大。", tag: "静电场" },
-  { text: "路端电压随外电阻增大而增大，外电路断路时等于电动势。", tag: "恒定电流" },
-  { text: "安培力左手定则，感应电动势右手定则，右手螺旋定磁场。", tag: "三大定则" },
-  { text: "洛伦兹力永不做功，只能改变速度方向，不改变速率与动能。", tag: "磁场动力学" },
-  { text: "楞次定律：感应电流效果总是反抗引起它的原因——增反减同，来拒去留。", tag: "电磁感应" },
-  { text: "法拉第电磁感应：电动势大小取决于磁通量变化率，而非磁通量本身。", tag: "电磁感应" },
-  { text: "简谐运动回复力恒指向平衡位置，加速度与位移反向。", tag: "机械振动" },
-  { text: "机械波波速由介质决定，波源频率决定振动频率，折射时频率不变。", tag: "机械波" },
-  { text: "光在介质中折射传播：频率不变，波速减小，波长变短。", tag: "光学规律" },
-  { text: "光电效应瞬时发生，能否发生只取决于入射光频率。", tag: "光电效应" },
-  { text: "玻尔原子跃迁：从高能级跃迁到低能级辐射光子，hν = E₂ - E₁。", tag: "玻尔原子" },
-  { text: "质量亏损并非质量消亡，而是转化释放了结合能：ΔE = Δmc²。", tag: "质能方程" },
-  { text: "传送带模型中，物块与传送带共速是滑动摩擦力突变的关键分界点。", tag: "临界极值" },
-  { text: "连接体动力学：求系统整体加速度用整体法，求相互作用力用隔离法。", tag: "连接体" },
-  { text: "机车恒功率启动：做加速度减小的变加速运动，直到牵引力等于阻力。", tag: "机车启动" },
-  { text: "带电粒子匀强磁场圆周运动，周期 T = 2πm/qB 与速率无关。", tag: "磁场回旋" },
-  { text: "平抛运动速度偏角正切值等于位移偏角正切值的 2 倍：tanα = 2tanθ。", tag: "平抛几何" },
-  { text: "游标卡尺读数不估读，螺旋测微器必须估读到千分位。", tag: "实验规范" },
-  { text: "伏安法测电阻：大电阻内接（测值偏大），小电阻外接（测值偏小）。", tag: "电学实验" },
-  { text: "卫星变轨：点火加速做离心运动抬升轨道，点火减速进入低轨。", tag: "变轨模型" },
-  { text: "动生电动势本质是洛伦兹力，感生电动势本质是感生电场力。", tag: "感应本质" },
-  { text: "碰撞三原则：动量必须守恒，机械能绝不增加，碰后不互相穿透。", tag: "碰撞模型" },
-  { text: "电容器充放电是电荷的转移，电容决定式 C = εS / 4πkd。", tag: "电容器" },
-  { text: "分子势能极值点：分子间距等于 r₀ 时引力等于斥力，势能达到最小。", tag: "热学分子论" },
-  { text: "热力学第二定律：热量不可能自发地从低温物体传到高温物体。", tag: "热学定律" },
-  { text: "自由落体是初速度为零的匀加速运动，下落快慢与质量完全无关。", tag: "自由落体" },
+// 精选高中英语核心语法速记与解题模型（每条控制在十几字，2~3 秒读完）
+const ENGLISH_FLASHES: GrammarFlash[] = [
+  {
+    text: "判断谓语还是非谓语：句中有连词，谓语等于连词数+1；无连词则只能有一个谓语。",
+    tag: "谓语判定",
+  },
+  { text: "非谓语动词三步法：找逻辑主语 -> 定主动被动 -> 看时间先后。", tag: "非谓语动词" },
+  { text: "定语从句关系代词指代先行词在从句中作主语、宾语或表语；副词作状语。", tag: "定语从句" },
+  { text: "介词提前定语从句：介词后指人只能用 whom，指物只能用 which。", tag: "介词提前" },
+  {
+    text: "名词性从句缺成分或意思用 what（表示‘所...的’），不缺成分且无意义用 that。",
+    tag: "名词性从句",
+  },
+  { text: "that 引导同位语从句解释抽象名词内容，在从句中不作任何句子成分。", tag: "同位语从句" },
+  {
+    text: "状语从句省略条件：从句主语与主句一致，且含有 be 动词时，主语和 be 动词可一同省略。",
+    tag: "从句省略",
+  },
+  { text: "现在分词表主动和进行，过去分词表被动和完成。", tag: "分词用法" },
+  { text: "动词不定式多表目的、将要发生的动作或具体某一次的行为。", tag: "不定式" },
+  {
+    text: "with 复合结构：with + 宾语 + 宾补（doing 表主动进行，done 表被动完成，to do 表将来）。",
+    tag: "with复合结构",
+  },
+  {
+    text: "时态时间轴：过去完成时表示‘过去的过去’，必须以一个过去的动作为参照基准。",
+    tag: "过去完成时",
+  },
+  {
+    text: "现在完成时表示过去动作对现在造成的影响或结果，常与 already, yet, so far, since 连用。",
+    tag: "现在完成时",
+  },
+  {
+    text: "if 虚拟语气条件句：对现在虚拟从句用过去式（be 动词用 were），主句用 would/could/should/might + do。",
+    tag: "虚拟语气",
+  },
+  {
+    text: "if 虚拟语气条件句：对过去虚拟从句用 had done，主句用 would/could/should/might + have done。",
+    tag: "虚拟语气",
+  },
+  {
+    text: "一坚持、二命令、三建议、四要求：名词性从句中谓语动词用 (should) + 动词原形。",
+    tag: "虚拟从句",
+  },
+  {
+    text: "it is + 被强调部分 + that/who + 其余部分，去掉 it is 和 that 后句子结构依然完整。",
+    tag: "强调句型",
+  },
+  {
+    text: "否定词（never, seldom, hardly, scarcely, little）置于句首时，句子用部分倒装。",
+    tag: "部分倒装",
+  },
+  { text: "only + 状语（副词/介词短语/状语从句）置于句首时，主句采用部分倒装。", tag: "部分倒装" },
+  { text: "there be 句型遵循就近原则：be 动词单复数与离它最近的主语保持一致。", tag: "就近原则" },
+  {
+    text: "as well as, together with, along with 连接两主语时，谓语动词与前面的主语保持一致。",
+    tag: "就远原则",
+  },
+  {
+    text: "either...or..., neither...nor..., not only...but also... 连接两主语时遵循就近原则。",
+    tag: "就近原则",
+  },
+  {
+    text: "the number of + 复数名词，谓语用单数；a number of + 复数名词，谓语用复数。",
+    tag: "主谓一致",
+  },
+  {
+    text: "each, every, either, neither 单独作主语或修饰单数名词时，谓语动词一律用单数。",
+    tag: "代词一致",
+  },
+  { text: "动名词/不定式短语或从句作主语时，谓语动词通常视作单数概念。", tag: "主语单复数" },
+  {
+    text: "find / consider / think / make + it + adj./n. + to do sth.，it 为形式宾语，真正的宾语是不定式。",
+    tag: "形式宾语",
+  },
+  {
+    text: "look forward to, pay attention to, be used to, devote...to 中的 to 都是介词，后接动名词 -ing。",
+    tag: "介词 to",
+  },
+  {
+    text: "suggest, enjoy, finish, avoid, mind, practice 后接动词一律用动名词 -ing。",
+    tag: "接动名词",
+  },
+  {
+    text: "need / require / want 表示‘需要被...’时，用主动形式表被动含义：need doing = need to be done。",
+    tag: "被动含义",
+  },
+  {
+    text: "be said to have done sth. 表示据说已经完成了某事，不定式完成式表示动作先于谓语发生。",
+    tag: "不定式完成式",
+  },
+  {
+    text: "independent of 与 depend on 构成反义词块，写作与填空中注意词性与搭配转换。",
+    tag: "核心词块",
+  },
+  {
+    text: "读后续写动作链描写：利用分词作伴随状语（-ing/-ed）使长句节奏紧凑流畅。",
+    tag: "写作句式",
+  },
 ];
 
 // 每次刷新随机抽取一条（SSR 保底第一条）
@@ -64,11 +122,11 @@ onBeforeUnmount(() => {
 
 onMounted(() => {
   // 每次页面刷新或载入时随机选择一条
-  currentIndex.value = Math.floor(Math.random() * PHYSICS_FLASHES.length);
+  currentIndex.value = Math.floor(Math.random() * ENGLISH_FLASHES.length);
 });
 
-const currentItem = computed<PhysicsFlash>(() => {
-  return PHYSICS_FLASHES[currentIndex.value] || PHYSICS_FLASHES[0];
+const currentItem = computed<GrammarFlash>(() => {
+  return ENGLISH_FLASHES[currentIndex.value] || ENGLISH_FLASHES[0];
 });
 
 // 点击换一条
@@ -77,9 +135,9 @@ const handleNext = () => {
   isChanging.value = true;
   if (nextTimer) clearTimeout(nextTimer);
   nextTimer = setTimeout(() => {
-    let nextIdx = Math.floor(Math.random() * PHYSICS_FLASHES.length);
+    let nextIdx = Math.floor(Math.random() * ENGLISH_FLASHES.length);
     if (nextIdx === currentIndex.value) {
-      nextIdx = (nextIdx + 1) % PHYSICS_FLASHES.length;
+      nextIdx = (nextIdx + 1) % ENGLISH_FLASHES.length;
     }
     currentIndex.value = nextIdx;
     isChanging.value = false;
@@ -90,7 +148,7 @@ const handleNext = () => {
 // 复制速记
 const handleCopy = async (event: MouseEvent) => {
   event.stopPropagation();
-  const text = `【高中物理速记】${currentItem.value.text}（#${currentItem.value.tag}）`;
+  const text = `【高中英语语法速记】${currentItem.value.text}（#${currentItem.value.tag}）`;
   try {
     if (
       typeof navigator !== "undefined" &&
@@ -119,12 +177,12 @@ const handleCopy = async (event: MouseEvent) => {
 </script>
 
 <template>
-  <div class="cc-physics-flash-wrap">
+  <div class="cc-flash-wrap">
     <div
-      class="cc-physics-flash-card"
+      class="cc-flash-card"
       role="button"
       tabindex="0"
-      title="点击换一条高中物理速记"
+      title="点击换一条高中英语语法速记"
       @click="handleNext"
       @keydown.enter="handleNext"
       @keydown.space.prevent="handleNext"
@@ -223,12 +281,12 @@ const handleCopy = async (event: MouseEvent) => {
 </template>
 
 <style scoped>
-.cc-physics-flash-wrap {
+.cc-flash-wrap {
   margin-top: 22px;
   width: 100%;
 }
 
-.cc-physics-flash-card {
+.cc-flash-card {
   position: relative;
   display: flex;
   align-items: center;
@@ -236,8 +294,8 @@ const handleCopy = async (event: MouseEvent) => {
   max-width: 680px;
   width: 100%;
   padding: 8px 14px;
-  background: color-mix(in srgb, var(--vp-c-brand-1, #5672cd) 5%, var(--vp-c-bg-soft));
-  border: 1px solid color-mix(in srgb, var(--vp-c-brand-1, #5672cd) 18%, transparent);
+  background: color-mix(in srgb, var(--vp-c-brand-1, #4f46e5) 5%, var(--vp-c-bg-soft));
+  border: 1px solid color-mix(in srgb, var(--vp-c-brand-1, #4f46e5) 18%, transparent);
   border-radius: 12px;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -247,14 +305,14 @@ const handleCopy = async (event: MouseEvent) => {
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.cc-physics-flash-card:hover {
-  background: color-mix(in srgb, var(--vp-c-brand-1, #5672cd) 9%, var(--vp-c-bg-soft));
-  border-color: color-mix(in srgb, var(--vp-c-brand-1, #5672cd) 35%, transparent);
+.cc-flash-card:hover {
+  background: color-mix(in srgb, var(--vp-c-brand-1, #4f46e5) 9%, var(--vp-c-bg-soft));
+  border-color: color-mix(in srgb, var(--vp-c-brand-1, #4f46e5) 35%, transparent);
   box-shadow: var(--vp-shadow-2);
   transform: translateY(-1px);
 }
 
-.cc-physics-flash-card:focus-visible {
+.cc-flash-card:focus-visible {
   outline: 2px solid var(--vp-c-brand-1);
   outline-offset: 2px;
 }
@@ -370,7 +428,7 @@ const handleCopy = async (event: MouseEvent) => {
 }
 
 @media (max-width: 640px) {
-  .cc-physics-flash-card {
+  .cc-flash-card {
     align-items: flex-start;
     padding: 10px 12px;
   }

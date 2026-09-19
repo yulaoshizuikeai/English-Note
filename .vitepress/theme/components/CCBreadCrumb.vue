@@ -31,9 +31,9 @@ watchEffect(() => {
   if (!pathSegs.length) return;
 
   const specialTitles: Record<string, string> = {
-    "interactive.md": "高考物理可视化交互空间",
-    "golden-conclusions.md": "50 大黄金结论与临界条件",
-    "warning-cheatsheet.md": "全专题防踩坑排雷白皮书",
+    "interactive.md": "交互空间与自测导航",
+    "golden-conclusions.md": "50 大核心句法公式与速记",
+    "warning-cheatsheet.md": "全专题语法防踩坑排雷清单",
   };
 
   const list: Breadcrumb[] = [

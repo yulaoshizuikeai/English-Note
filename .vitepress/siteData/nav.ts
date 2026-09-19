@@ -26,8 +26,8 @@ export const buildNavItems = (rootDir: string): DefaultTheme.NavItem[] => {
     {
       text: "考前速查",
       items: [
-        { text: "50 大黄金结论与临界条件", link: "/golden-conclusions" },
-        { text: "全专题防踩坑排雷白皮书", link: "/warning-cheatsheet" },
+        { text: "50 大核心句法公式与速记", link: "/golden-conclusions" },
+        { text: "全专题语法防踩坑排雷清单", link: "/warning-cheatsheet" },
       ],
     },
     {

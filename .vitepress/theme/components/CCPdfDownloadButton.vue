@@ -5,10 +5,10 @@ import { computed } from "vue";
 const { page } = useData();
 
 // GitHub Actions 每次构建自动发布的最新版本 PDF 下载永久直链
-const RELEASE_BASE = "https://github.com/yulaoshizuikeai/Physics-Note/releases/download/latest-pdf";
+const RELEASE_BASE = "https://github.com/yulaoshizuikeai/English-Note/releases/download/latest-pdf";
 
-const completePdfUrl = `${RELEASE_BASE}/Physics-Note-Complete.pdf`;
-const allZippedPdfUrl = `${RELEASE_BASE}/Physics-Note-All-PDFs.zip`;
+const completePdfUrl = `${RELEASE_BASE}/English-Note-Complete.pdf`;
+const allZippedPdfUrl = `${RELEASE_BASE}/English-Note-All-PDFs.zip`;
 
 // 只有在文档页面才显示打印/导出按钮
 const isDocPage = computed(() => (page.value.frontmatter?.layout ?? "doc") === "doc");
@@ -28,7 +28,7 @@ const handlePrint = () => {
       :href="completePdfUrl"
       target="_blank"
       rel="noopener noreferrer"
-      title="下载 GitHub Actions 自动编译生成的高中物理全套笔记完整版 PDF"
+      title="下载 GitHub Actions 自动编译生成的英语语法全套笔记完整版 PDF"
     >
       <span class="CCPdfDownloadButtonBtnLabel">下载完整版</span>
       <span class="CCPdfDownloadButtonBtnHint">PDF</span>
@@ -40,7 +40,7 @@ const handlePrint = () => {
       :href="allZippedPdfUrl"
       target="_blank"
       rel="noopener noreferrer"
-      title="打包下载全套 19 大专题与考点独立 PDF 压缩包 (.zip)"
+      title="打包下载全套 12 大专题与考点独立 PDF 压缩包 (.zip)"
     >
       <span class="CCPdfDownloadButtonBtnLabel">全套分册打包</span>
       <span class="CCPdfDownloadButtonBtnHint">ZIP</span>

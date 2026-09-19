@@ -36,9 +36,10 @@ img {
   border-radius: 8px;
 }
 
-/* 物理矢量图解与图表卡片化外框 (Physics SVG Card Container) */
+/* 语法/矢量图解与图表卡片化外框 (Grammar / SVG Card Container) */
 .vp-doc img[src*=".svg"],
 .vp-doc img[src^="data:image/svg"],
+.grammar-svg-card,
 .physics-svg-card {
   display: block;
   max-width: 100%;
