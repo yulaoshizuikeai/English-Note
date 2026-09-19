@@ -1,0 +1,75 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <style>
+      .bg-base { fill: #FAF9F5; }
+      .grid-line { stroke: #E2E8F0; stroke-width: 1; stroke-dasharray: 4 4; }
+      .primary-ink { fill: #0F172A; }
+      .accent-ink { fill: #4F46E5; }
+      .subtle-ink { fill: #64748B; }
+      .border-line { stroke: #E2E8F0; stroke-width: 1.5; }
+      .text-title { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 800; }
+      .text-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+      .text-serif { font-family: Georgia, Cambria, "Times New Roman", Times, serif; }
+    </style>
+    <linearGradient id="card-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#F8FAFC" />
+    </linearGradient>
+    <linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#6366F1" />
+    </linearGradient>
+    <filter id="subtle-shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0F172A" flood-opacity="0.04" />
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="400" height="400" rx="32" class="bg-base" />
+  <rect x="1.5" y="1.5" width="397" height="397" rx="30.5" fill="none" class="border-line" />
+
+  <!-- Background Decorative Alignment Guides -->
+  <line x1="48" y1="90" x2="352" y2="90" class="grid-line" />
+  <line x1="48" y1="280" x2="352" y2="280" class="grid-line" />
+  <line x1="200" y1="48" x2="200" y2="352" class="grid-line" />
+
+  <!-- Central Card -->
+  <g filter="url(#subtle-shadow)">
+    <rect x="56" y="60" width="288" height="280" rx="20" fill="url(#card-grad)" stroke="#E2E8F0" stroke-width="1.2" />
+  </g>
+
+  <!-- Top Badge / Mono Tag -->
+  <rect x="80" y="84" width="76" height="22" rx="6" fill="#EEF2FF" />
+  <text x="118" y="99" text-anchor="middle" class="text-mono" font-size="10" font-weight="700" fill="#4F46E5" letter-spacing="1">SYNTAX</text>
+
+  <text x="320" y="99" text-anchor="end" class="text-mono" font-size="11" fill="#94A3B8">01 / ENG</text>
+
+  <!-- Central Emblem: Elegant Stylized Monogram & Open Book -->
+  <g transform="translate(140, 126)">
+    <!-- Book Base / Pages -->
+    <path d="M 10 70 Q 60 62 60 15 Q 60 62 110 70 L 110 18 Q 60 10 60 0 Q 60 10 10 18 Z" fill="#EEF2FF" stroke="#C7D2FE" stroke-width="1.5" />
+    
+    <!-- Left Page Text Guideline Marks -->
+    <line x1="22" y1="36" x2="48" y2="34" stroke="#A5B4FC" stroke-width="1.8" stroke-linecap="round" />
+    <line x1="22" y1="46" x2="44" y2="44" stroke="#A5B4FC" stroke-width="1.8" stroke-linecap="round" />
+    <line x1="22" y1="56" x2="50" y2="54" stroke="#A5B4FC" stroke-width="1.8" stroke-linecap="round" />
+
+    <!-- Right Page Accent Letter 'E' (Modern Serif) -->
+    <text x="85" y="54" text-anchor="middle" class="text-serif" font-size="34" font-weight="700" fill="#4F46E5">E</text>
+
+    <!-- Center Spine Line -->
+    <line x1="60" y1="0" x2="60" y2="70" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" />
+  </g>
+
+  <!-- Typography & Information Section -->
+  <text x="200" y="238" text-anchor="middle" class="text-title primary-ink" font-size="28" letter-spacing="2">ENGLISH</text>
+  
+  <!-- IPA Pronunciation -->
+  <text x="200" y="260" text-anchor="middle" class="text-mono subtle-ink" font-size="12" letter-spacing="0.5">/ˈɪŋɡlɪʃ/</text>
+
+  <!-- Divider Pill -->
+  <rect x="180" y="274" width="40" height="3" rx="1.5" fill="url(#brand-grad)" />
+
+  <!-- Bottom Subtitle / Metadata -->
+  <text x="200" y="304" text-anchor="middle" class="text-title" font-size="11" font-weight="600" fill="#64748B" letter-spacing="1.5">GRAMMAR &amp; SYNTAX</text>
+</svg>
