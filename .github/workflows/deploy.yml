@@ -1,0 +1,77 @@
+name: Build PDF
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build with VitePress
+        run: npm run docs:build
+
+      - name: Install CJK fonts & PDF utilities
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-noto-cjk fonts-noto-cjk-extra poppler-utils ghostscript zip
+          sudo fc-cache -fv
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Export PDFs
+        run: |
+          node scripts/export-pdf.js --concurrency 6
+
+      - name: Package PDFs (Merge Complete Book & Zip)
+        run: |
+          node scripts/package-pdf.js
+
+      - name: Create or Update GitHub Release with PDFs
+        uses: softprops/action-gh-release@v2
+        if: github.ref == 'refs/heads/master'
+        with:
+          tag_name: latest-pdf
+          name: "Latest Physics Note PDF (高中物理知识库最新版)"
+          body: |
+            ## 📚 高中物理知识库 - 自动化编译 PDF 成果物
+
+            - 📕 **单文件完整版全书**: `Physics-Note-Complete.pdf` (包含全书 19 个大专题、78 幅矢量图解与全部考点模型)
+            - 📦 **全套分册 ZIP 归档包**: `Physics-Note-All-PDFs.zip` (包含按章节排版归档的 99 篇独立矢量 PDF)
+            - ⏱️ **编译时间**: ${{ github.event.head_commit.timestamp || 'Latest' }}
+            - 🔗 **对应 Commit**: `${{ github.sha }}`
+          draft: false
+          prerelease: false
+          files: |
+            pdf-repo/Physics-Note-Complete.pdf
+            pdf-repo/Physics-Note-All-PDFs.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # 站点部署唯一走 Cloudflare Pages（Dashboard 关联仓库自动构建），
+  # 不再经过 GitHub Pages：构建命令 npm run docs:build，输出 .vitepress/dist，
+  # 自定义域 physics.yunet.cfd 在 Pages 项目里绑定，缓存规则见 public/_headers。

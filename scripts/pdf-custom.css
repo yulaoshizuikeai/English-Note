@@ -1,0 +1,211 @@
+﻿/**
+ * ============================================================
+ * 高中物理知识库 - PDF 专属印刷与导出样式表 (pdf-custom.css)
+ * ============================================================
+ * 特性：高信息密度教辅排版、纯白底色、墨黑文字、MathJax公式防溢出与智能防截断。
+ * 此文件仅在导出 PDF 时生效，完全不影响网页端的在线浏览体验。
+ */
+
+/* ------------------------------------------------------------
+   1. 彻底覆盖全局底色为【纯白】，消除任何泛黄/米黄色
+   ------------------------------------------------------------ */
+:root {
+  --vp-c-bg: #ffffff !important;
+  --vp-c-bg-alt: #ffffff !important;
+  --vp-c-bg-elv: #ffffff !important;
+  --vp-c-bg-soft: #f8fafc !important; /* 冷白微灰底 */
+  --vp-code-block-bg: #f8fafc !important;
+  --vp-code-bg: rgba(0, 0, 0, 0.04) !important;
+}
+
+html,
+body,
+#app,
+.Layout,
+.VPContent,
+.VPDoc,
+.vp-doc {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+
+/* ------------------------------------------------------------
+   2. 页面容器与版面利用率最大化（消除网页屏幕的巨幅内凹白边）
+   ------------------------------------------------------------ */
+.VPDoc,
+.content-container,
+.vp-doc {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+.VPDoc .container {
+  max-width: 100% !important;
+}
+
+/* ------------------------------------------------------------
+   3. 高密度正文与排版紧实度优化（物理讲义/教辅标准字级与行距）
+   ------------------------------------------------------------ */
+.vp-doc {
+  font-size: 9.5pt !important; /* 适中紧凑字号，容量比默认大 50%+ */
+  line-height: 1.45 !important; /* 紧凑而易读的行距 */
+  color: #0f172a !important; /* 墨黑印刷色 */
+}
+
+.vp-doc p {
+  margin: 4px 0 6px 0 !important; /* 压缩纵向空白 */
+  line-height: 1.45 !important;
+  color: #1e293b !important;
+}
+
+.vp-doc ul,
+.vp-doc ol {
+  margin: 4px 0 6px 0 !important;
+  padding-left: 20px !important;
+}
+
+.vp-doc li {
+  margin: 2px 0 !important;
+  line-height: 1.4 !important;
+}
+
+/* ------------------------------------------------------------
+   4. 标题紧凑化排版（去除网页级夸张边距）
+   ------------------------------------------------------------ */
+.vp-doc h1 {
+  font-size: 16pt !important;
+  margin: 0 0 8px 0 !important;
+  padding-bottom: 4px !important;
+  border-bottom: 1.5px solid #0f172a !important;
+}
+
+.vp-doc h2 {
+  font-size: 12.5pt !important;
+  margin: 12px 0 6px 0 !important; /* 压减上边距 */
+  padding-top: 0 !important;
+  padding-bottom: 3px !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.vp-doc h3 {
+  font-size: 10.5pt !important;
+  margin: 8px 0 4px 0 !important;
+}
+
+.vp-doc h4 {
+  font-size: 9.5pt !important;
+  margin: 6px 0 3px 0 !important;
+}
+
+/* ------------------------------------------------------------
+   5. 高密度对比表格与重点卡片（Tip/Warning/模型框）
+   ------------------------------------------------------------ */
+.vp-doc table {
+  margin: 6px 0 8px 0 !important;
+  font-size: 8.5pt !important; /* 表格专用高密度字号 */
+  line-height: 1.3 !important;
+  background-color: #ffffff !important;
+}
+
+.vp-doc th {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  font-weight: 700 !important;
+  padding: 3px 6px !important;
+}
+
+.vp-doc td {
+  padding: 3px 6px !important;
+  border-color: #cbd5e1 !important;
+}
+
+.vp-doc .custom-block {
+  margin: 6px 0 8px 0 !important;
+  padding: 6px 12px !important;
+  font-size: 9pt !important;
+  line-height: 1.4 !important;
+  background-color: #f8fafc !important;
+  border-left-width: 4px !important;
+}
+
+.vp-doc .custom-block p {
+  margin: 2px 0 !important;
+}
+
+.vp-doc .custom-block.tip {
+  border-color: #10b981 !important;
+}
+.vp-doc .custom-block.warning {
+  border-color: #f59e0b !important;
+}
+.vp-doc .custom-block.danger {
+  border-color: #ef4444 !important;
+}
+.vp-doc .custom-block.info {
+  border-color: #0ea5e9 !important;
+}
+
+/* ------------------------------------------------------------
+   6. 物理公式 (MathJax) 与矢量图解适配
+   ------------------------------------------------------------ */
+.vp-doc mjx-container {
+  overflow: visible !important;
+}
+
+.vp-doc mjx-container[jax="CHTML"][display="true"],
+.vp-doc mjx-container[jax="SVG"][display="true"] {
+  margin: 6px 0 !important;
+}
+
+.vp-doc svg {
+  max-height: 240px !important;
+  width: auto !important;
+  max-width: 100% !important;
+  margin: 6px auto !important;
+  display: block !important;
+}
+
+/* ------------------------------------------------------------
+   7. 隐藏网页专有冗余控件
+   ------------------------------------------------------------ */
+.VPNav,
+.VPSidebar,
+.VPLocalNav,
+.aside,
+.waline-wrapper,
+.cc-back-to-top,
+.cc-share,
+.interactive-simulator-controls,
+.feedback-container,
+.doc-footer,
+.VPSkipLink {
+  display: none !important;
+}
+
+/* ------------------------------------------------------------
+   8. 智能防截断与分页规避
+   ------------------------------------------------------------ */
+@media print {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  .custom-block,
+  pre,
+  table,
+  svg,
+  mjx-container[display="true"],
+  .vp-doc figure,
+  .interactive-container {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}

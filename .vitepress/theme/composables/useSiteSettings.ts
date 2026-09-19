@@ -1,0 +1,111 @@
+import { readonly, reactive } from "vue";
+
+export type SiteFontFamily = "default" | "serif";
+
+export type SiteSettings = {
+  showContributors: boolean;
+  showOutline: boolean;
+  showComments: boolean;
+  fontFamily: SiteFontFamily;
+};
+
+const STORAGE_KEY = "cc-site-settings";
+
+const defaultSettings: SiteSettings = {
+  showContributors: true,
+  showOutline: true,
+  showComments: true,
+  fontFamily: "default",
+};
+
+const settings = reactive<SiteSettings>({ ...defaultSettings });
+let loaded = false;
+
+const isSiteFontFamily = (value: unknown): value is SiteFontFamily =>
+  value === "default" || value === "serif";
+
+const normalizeSettings = (value: unknown): Partial<SiteSettings> => {
+  if (!value || typeof value !== "object") return {};
+
+  const rawSettings = value as Partial<Record<keyof SiteSettings, unknown>>;
+  const nextSettings: Partial<SiteSettings> = {};
+
+  if (typeof rawSettings.showContributors === "boolean") {
+    nextSettings.showContributors = rawSettings.showContributors;
+  }
+
+  if (typeof rawSettings.showOutline === "boolean") {
+    nextSettings.showOutline = rawSettings.showOutline;
+  }
+
+  if (typeof rawSettings.showComments === "boolean") {
+    nextSettings.showComments = rawSettings.showComments;
+  }
+
+  if (isSiteFontFamily(rawSettings.fontFamily)) {
+    nextSettings.fontFamily = rawSettings.fontFamily;
+  }
+
+  return nextSettings;
+};
+
+const persistSettings = () => {
+  if (typeof window === "undefined") return;
+  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
+};
+
+const applySiteSettings = () => {
+  if (typeof document === "undefined") return;
+
+  const root = document.documentElement;
+  root.classList.toggle("cc-hide-contributors", !settings.showContributors);
+  root.classList.toggle("cc-hide-outline", !settings.showOutline);
+  root.classList.toggle("cc-hide-comments", !settings.showComments);
+  root.classList.toggle("cc-font-serif", settings.fontFamily === "serif");
+};
+
+const loadSiteSettings = () => {
+  if (loaded || typeof window === "undefined") return;
+  loaded = true;
+
+  try {
+    const storedSettings = window.localStorage.getItem(STORAGE_KEY);
+    if (storedSettings) {
+      Object.assign(settings, normalizeSettings(JSON.parse(storedSettings)));
+    }
+  } catch (error) {
+    console.error("[useSiteSettings] Failed to load settings", error);
+  }
+
+  applySiteSettings();
+};
+
+export const bootstrapSiteSettings = () => {
+  // loadSiteSettings() 内部末尾已调用 applySiteSettings()，无需重复
+  loadSiteSettings();
+};
+
+export const updateSiteSettings = <K extends keyof SiteSettings>(
+  key: K,
+  value: SiteSettings[K],
+) => {
+  settings[key] = value;
+  applySiteSettings();
+  persistSettings();
+};
+
+export const resetSiteSettings = () => {
+  Object.assign(settings, defaultSettings);
+  applySiteSettings();
+  persistSettings();
+};
+
+export const useSiteSettings = () => {
+  loadSiteSettings();
+
+  return {
+    settings: readonly(settings),
+    updateSiteSettings,
+    resetSiteSettings,
+  };
+};

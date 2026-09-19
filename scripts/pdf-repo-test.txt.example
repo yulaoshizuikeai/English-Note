@@ -1,0 +1,9 @@
+﻿# pdf-repo-test.txt -- 增量 PDF 导出页面列表（示例）
+# 每行填写一个相对于 dist 目录的 .html 文件路径
+# 以 # 开头的行为注释，会被自动忽略
+# 用法：cp scripts/pdf-repo-test.txt.example scripts/pdf-repo-test.txt
+#       然后编辑该文件，添加需要导出的页面路径
+#
+# 示例：
+# 01 运动的描述与匀变速规律/匀变速直线运动的基本公式.html
+# 02 相互作用与共点力平衡/共点力的平衡.html

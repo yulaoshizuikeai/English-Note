@@ -1,0 +1,58 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 56" fill="none" width="260" height="56">
+  <defs>
+    <!-- Area gradient -->
+    <linearGradient id="cycle-svg-area" x1="0" y1="0" x2="0" y2="44" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#5672CD" stop-opacity="0.32" />
+      <stop offset="65%" stop-color="#38bdf8" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+    </linearGradient>
+    <!-- Line gradient -->
+    <linearGradient id="cycle-svg-stroke" x1="0" y1="22" x2="260" y2="22" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#5672CD" stop-opacity="0.55" />
+      <stop offset="40%" stop-color="#38bdf8" />
+      <stop offset="80%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#60a5fa" />
+    </linearGradient>
+    <linearGradient id="today-tick" x1="0" y1="0" x2="22" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+    <!-- Glow filter -->
+    <filter id="svg-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="b" />
+      <feComposite in="SourceGraphic" in2="b" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Container background card -->
+  <rect width="260" height="56" rx="18" fill="#5672CD" fill-opacity="0.05" stroke="#5672CD" stroke-opacity="0.18" stroke-width="1" />
+
+  <!-- 7-day rolling wave area -->
+  <path d="M 16 34 C 22.3 33.0, 47.7 29.0, 54 28 C 60.3 27.0, 85.7 32.7, 92 32 C 98.3 31.3, 123.7 20.7, 130 20 C 136.3 19.3, 161.7 25.7, 168 25 C 174.3 24.3, 199.7 18.7, 206 18 C 212.3 17.3, 237.7 11.7, 244 11 L 244 44 L 16 44 Z" fill="url(#cycle-svg-area)" />
+
+  <!-- 7-day spline curve -->
+  <path d="M 16 34 C 22.3 33.0, 47.7 29.0, 54 28 C 60.3 27.0, 85.7 32.7, 92 32 C 98.3 31.3, 123.7 20.7, 130 20 C 136.3 19.3, 161.7 25.7, 168 25 C 174.3 24.3, 199.7 18.7, 206 18 C 212.3 17.3, 237.7 11.7, 244 11" stroke="url(#cycle-svg-stroke)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" filter="url(#svg-glow)" />
+
+  <!-- 7 cycle nodes (zero numbers) -->
+  <circle cx="16" cy="34" r="2" fill="#38bdf8" fill-opacity="0.4" />
+  <circle cx="54" cy="28" r="2" fill="#38bdf8" fill-opacity="0.4" />
+  <circle cx="92" cy="32" r="2" fill="#38bdf8" fill-opacity="0.4" />
+  <circle cx="130" cy="20" r="2" fill="#38bdf8" fill-opacity="0.4" />
+  <circle cx="168" cy="25" r="2" fill="#38bdf8" fill-opacity="0.4" />
+  <circle cx="206" cy="18" r="2" fill="#38bdf8" fill-opacity="0.4" />
+
+  <!-- Today beacon (Today vs Yesterday active slope) -->
+  <circle cx="244" cy="11" r="7" fill="#38bdf8" fill-opacity="0.25" />
+  <circle cx="244" cy="11" r="3.2" fill="#ffffff" />
+
+  <!-- 7-day sliding window bottom track -->
+  <g transform="translate(48, 48)">
+    <rect x="0" y="0" width="14" height="2.5" rx="1.25" fill="#5672CD" fill-opacity="0.25" />
+    <rect x="22" y="0" width="14" height="2.5" rx="1.25" fill="#5672CD" fill-opacity="0.25" />
+    <rect x="44" y="0" width="14" height="2.5" rx="1.25" fill="#5672CD" fill-opacity="0.25" />
+    <rect x="66" y="0" width="14" height="2.5" rx="1.25" fill="#5672CD" fill-opacity="0.25" />
+    <rect x="88" y="0" width="14" height="2.5" rx="1.25" fill="#5672CD" fill-opacity="0.25" />
+    <rect x="110" y="0" width="14" height="2.5" rx="1.25" fill="#5672CD" fill-opacity="0.25" />
+    <rect x="132" y="0" width="22" height="2.5" rx="1.25" fill="url(#today-tick)" />
+  </g>
+</svg>

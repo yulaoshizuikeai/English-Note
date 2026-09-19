@@ -1,0 +1,14 @@
+# Robots.txt for physics.yunet.cfd
+User-agent: *
+Allow: /
+Allow: /sitemap.xml
+
+# Disallow internal redirect utility and hidden routes
+Disallow: /s.html
+Disallow: /s/
+Disallow: /hidePage/
+Disallow: /hashmap.json
+Disallow: /shortmap.json
+
+# Sitemap location
+Sitemap: https://physics.yunet.cfd/sitemap.xml

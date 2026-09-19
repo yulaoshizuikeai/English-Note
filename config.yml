@@ -1,0 +1,38 @@
+export:
+  changedPages:
+    outDir: ".github/changed-pages"
+    globalChange:
+      - ".vitepress/**"
+      - "public/**"
+      - "data/**"
+      - "package.json"
+      - "package-lock.json"
+      - "config.yml"
+    sourceExtensions:
+      - ".md"
+  pdf:
+    distDir: ".vitepress/dist"
+    outDir: "pdf-repo"
+    concurrency:
+      default: 2
+      min: 1
+      max: 8
+    include:
+      - "**/*.html"
+    exclude:
+      - "404.html"
+      - "**/index.html"
+      - "s.html"
+      - "README.html"
+      - "PROJECT.html"
+      - "TEST_INFRA.html"
+      - "TEST_READY.html"
+      - "google*.html"
+      - "hidePage/**"
+    page:
+      format: "A4"
+      margin:
+        top: "10mm"
+        bottom: "10mm"
+        left: "10mm"
+        right: "10mm"

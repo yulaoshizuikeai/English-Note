@@ -1,0 +1,51 @@
+<svg width="330" height="380" viewBox="0 0 330 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Back page (blue, tilted -5.75deg) -->
+  <rect y="29.6086" width="285.591" height="352" rx="18" transform="rotate(-5.74915 0 29.6086)" fill="#5672CD"/>
+  
+  <!-- Front page with shadow -->
+  <g filter="url(#shadow)">
+    <rect x="45.5326" y="10" width="274" height="352" rx="18" fill="white"/>
+    <!-- Notebook lined paper pattern -->
+    <rect x="45.5326" y="10" width="274" height="352" rx="18" fill="url(#lines)"/>
+    
+    <!-- Bold Physics Bohr Atom Icon (thick, tactile stroke weight) -->
+    <!-- Orbit 1: 0 deg (Horizontal) -->
+    <ellipse cx="182.5" cy="165" rx="66" ry="26" stroke="#5672CD" stroke-width="8.5" fill="none"/>
+    
+    <!-- Orbit 2: 60 deg -->
+    <ellipse cx="182.5" cy="165" rx="66" ry="26" stroke="#5672CD" stroke-width="8.5" fill="none" transform="rotate(60 182.5 165)"/>
+    
+    <!-- Orbit 3: 120 deg -->
+    <ellipse cx="182.5" cy="165" rx="66" ry="26" stroke="#5672CD" stroke-width="8.5" fill="none" transform="rotate(120 182.5 165)"/>
+    
+    <!-- Center Nucleus -->
+    <circle cx="182.5" cy="165" r="15" fill="#5672CD"/>
+    
+    <!-- Electrons (Bold tactile nodes at orbit vertices) -->
+    <!-- Electron on Orbit 1 -->
+    <circle cx="248.5" cy="165" r="7.5" fill="#5672CD"/>
+    <!-- Electron on Orbit 2 -->
+    <circle cx="149.5" cy="107.8" r="7.5" fill="#5672CD"/>
+    <!-- Electron on Orbit 3 -->
+    <circle cx="149.5" cy="222.2" r="7.5" fill="#5672CD"/>
+    
+    <!-- Notebook Underline -->
+    <path d="M97.5326 271H267.033" stroke="#5672CD" stroke-width="11" stroke-linecap="round"/>
+  </g>
+
+  <defs>
+    <filter id="shadow" x="35.5326" y="0" width="294" height="372" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset/>
+      <feGaussianBlur stdDeviation="5"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+    </filter>
+    <pattern id="lines" patternUnits="userSpaceOnUse" patternTransform="matrix(1370 0 0 40 45.5326 182)" preserveAspectRatio="none" viewBox="0 0 1370 40" width="1" height="1">
+      <rect width="274" height="8" fill="#D1D1D1" fill-opacity="0.37"/>
+    </pattern>
+  </defs>
+</svg>

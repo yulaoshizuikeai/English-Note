@@ -1,0 +1,17 @@
+# Cloudflare Pages 边缘缓存策略（GitHub Pages 会忽略本文件，安全保留）
+# 目标：大陆访问下公式页大 JS / 图片走边缘命中 + Brotli，只让 HTML 回源，保证更新即时生效。
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
