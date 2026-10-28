@@ -27,7 +27,7 @@
      ------------------------------------------------------------ */
   --vp-c-text-1: #1f2328;
   --vp-c-text-2: #57606a;
-  --vp-c-text-3: #6e7781;
+  --vp-c-text-3: #57606a;
 
   /* ------------------------------------------------------------
      4. Borders & Dividers (Light Mode: Ultra-light transparency)
@@ -131,6 +131,7 @@
   --vp-nav-bg-color: rgba(250, 249, 245, 0.88);
   --vp-nav-screen-bg-color: #faf9f5;
   --vp-sidebar-bg-color: #faf9f5;
+  --vp-sidebar-width: 304px;
   --vp-home-hero-name-background: linear-gradient(135deg, #4338ca 0%, #6366f1 50%, #818cf8 100%);
   --vp-home-hero-image-background-image: radial-gradient(
     circle at center,
@@ -159,7 +160,7 @@
   /* Typography & Ink Scale */
   --vp-c-text-1: #e3e5e8;
   --vp-c-text-2: #9ba1a6;
-  --vp-c-text-3: #687076;
+  --vp-c-text-3: #8b949e;
 
   /* Borders & Dividers */
   --vp-c-border: rgba(255, 255, 255, 0.09);
@@ -237,6 +238,7 @@
   --vp-nav-bg-color: rgba(21, 23, 24, 0.88);
   --vp-nav-screen-bg-color: #151718;
   --vp-sidebar-bg-color: #151718;
+  --vp-sidebar-width: 304px;
   --vp-home-hero-name-background: linear-gradient(135deg, #5672cd 0%, #758ee6 50%, #b8c8fa 100%);
   --vp-home-hero-image-background-image: radial-gradient(
     circle at center,

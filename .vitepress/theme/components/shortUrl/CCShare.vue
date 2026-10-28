@@ -108,7 +108,7 @@ onBeforeUnmount(() => {
 });
 </script>
 
-<style>
+<style scoped>
 .share-panel > svg,
 .share-panel .share-qr-placeholder {
   border-radius: 3px;
@@ -164,6 +164,7 @@ onBeforeUnmount(() => {
     right: 0;
     bottom: 0;
     height: 40px;
+    cursor: pointer;
 
     color: var(--vp-c-text-1);
     background: #75798e10;
@@ -210,7 +211,7 @@ onBeforeUnmount(() => {
 
   .share-panel .copylink:hover {
     border-color: var(--vp-c-brand-1);
-    background: var(--vp-c-bg-soft-hover);
+    background: var(--vp-c-bg-mute, var(--vp-c-default-soft));
     color: var(--vp-c-text-1);
   }
 }

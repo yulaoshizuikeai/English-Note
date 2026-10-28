@@ -508,7 +508,7 @@ const redraw = () => {
     ctx.arc(0, -node.radius + 2, 7, 0, Math.PI * 2);
     ctx.fillStyle = color;
     ctx.fill();
-    ctx.fillStyle = "#ffffff";
+    ctx.fillStyle = "#121415";
     ctx.font = "bold 8px sans-serif";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";

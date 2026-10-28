@@ -13,11 +13,11 @@
   --vp-shadow-table: 0 4px 16px -4px rgba(0, 0, 0, 0.035), 0 2px 6px -2px rgba(0, 0, 0, 0.015);
 
   /* Spacing rhythm tokens */
-  --cc-space-xs: 0.35rem;
-  --cc-space-sm: 0.65rem;
-  --cc-space-md: 1.1rem;
-  --cc-space-lg: 1.75rem;
-  --cc-space-xl: 2.4rem;
+  --cc-space-xs: 4px;
+  --cc-space-sm: 8px;
+  --cc-space-md: 16px;
+  --cc-space-lg: 24px;
+  --cc-space-xl: 32px;
 
   /* Touch target minimum */
   --cc-touch-min: 44px;
@@ -51,13 +51,13 @@ body {
 /* Document Content Typography */
 .vp-doc {
   color: var(--vp-c-text-1);
-  line-height: 1.82;
+  line-height: 1.68;
   font-size: 16px;
   letter-spacing: 0.012em;
 }
 
 .vp-doc p {
-  line-height: 1.82;
+  line-height: 1.68;
   margin: var(--cc-space-md) 0;
   color: var(--vp-c-text-1);
 }
@@ -69,6 +69,7 @@ body {
 .vp-doc h4,
 .vp-doc h5,
 .vp-doc h6 {
+  font-weight: 550;
   color: var(--vp-c-text-1);
   font-weight: 650;
   letter-spacing: -0.015em;
@@ -78,7 +79,7 @@ body {
 .vp-doc h1 {
   font-family: var(--vp-font-family-serif);
   font-size: 2.3rem;
-  line-height: 1.18;
+  line-height: 1.28;
   margin-top: 1.2rem;
   margin-bottom: 1.5rem;
   font-weight: 700;
@@ -103,6 +104,7 @@ body {
 }
 
 .vp-doc h3 {
+  font-weight: 600;
   font-size: 1.25rem;
   line-height: 1.38;
   letter-spacing: -0.015em;
@@ -111,6 +113,7 @@ body {
 }
 
 .vp-doc h4 {
+  font-weight: 600;
   font-size: 1.06rem;
   line-height: 1.45;
   letter-spacing: -0.01em;
@@ -123,7 +126,7 @@ body {
 .vp-doc ol {
   padding-left: 1.4rem;
   margin: 0.85rem 0;
-  line-height: 1.82;
+  line-height: 1.68;
 }
 
 .vp-doc li + li {
@@ -677,7 +680,18 @@ html.dark .flash-kw {
   color: #ffffff !important;
 }
 
-.VPHomeHero .action .VPButton.brand:hover {
+.dark .VPHomeHero .action .VPButton.brand,
+.dark .VPButton.brand {
+  color: #121415 !important;
+  background-color: var(--vp-c-brand-1) !important;
+}
+
+.dark .VPButton.brand:hover {
+  color: #121415 !important;
+  background-color: var(--vp-c-brand-3) !important;
+}
+
+.VPButton.brand:hover {
   background-color: var(--vp-c-brand-2) !important;
   border-color: var(--vp-c-brand-2) !important;
   transform: translateY(-2px) !important;
@@ -954,7 +968,7 @@ html.dark .flash-kw {
 /* Wider spacing for page content on desktop */
 @media (min-width: 960px) {
   .vp-doc {
-    font-size: 16.5px;
+    font-size: 16px;
   }
 }
 
@@ -1155,43 +1169,92 @@ html.dark .flash-kw {
 }
 
 /* ------------------------------------------------------------------
-   B. Sidebar — paper card feeling, active item emphasis
+   B. Sidebar — 规范化纸质卡片与呼吸边距规范 (8-Point Grid)
    ------------------------------------------------------------------ */
 .VPSidebar {
   border-right: 1px solid var(--vp-c-divider) !important;
   background-color: var(--vp-sidebar-bg-color) !important;
+  scrollbar-gutter: stable;
 }
 
-/* Group titles */
+@media (min-width: 960px) {
+  .VPSidebar {
+    width: var(--vp-sidebar-width, 304px) !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+}
+
+/* Group titles 一级大章节标题 */
 .VPSidebarItem.level-0 > .item > .link {
   font-weight: 700 !important;
   font-size: 0.95rem !important;
   letter-spacing: -0.01em !important;
   color: var(--vp-c-text-1) !important;
+  padding: 8px 10px !important;
+  border-radius: 8px !important;
 }
 
-/* Collapsible section headers */
-.VPSidebarItem .item > .link {
-  border-radius: 6px !important;
+/* 二级文章菜单项：标准圆角卡片，呼吸边距对称 */
+.VPSidebarItem.level-1 {
+  margin: 3px 0 !important;
+}
+
+.VPSidebarItem.level-1 > .item {
+  min-height: 38px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.VPSidebarItem.level-1 .link {
+  min-height: 38px !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 7px 12px !important;
+  margin: 0 !important;
+  border-radius: 8px !important;
+  box-sizing: border-box !important;
   transition:
     background-color 0.15s ease,
     color 0.15s ease;
+  width: 100% !important;
 }
 
-.VPSidebarItem .item > .link:hover {
-  background-color: color-mix(in srgb, var(--vp-c-brand-1) 5%, var(--vp-c-bg-soft)) !important;
-  color: var(--vp-c-brand-1) !important;
+.VPSidebarItem.level-1 .text {
+  padding: 0 !important;
+  line-height: 1.45 !important;
+  font-size: 13.5px !important;
+  color: var(--vp-c-text-2) !important;
+  transition: color 0.15s ease;
 }
 
-/* Active link */
-.VPSidebarItem.is-active > .item > .link,
-.VPSidebarItem .is-active > .link {
+/* Hover 态：优雅次级微底色 */
+.VPSidebarItem.level-1 .link:hover {
+  background-color: var(--vp-c-default-soft, rgba(0, 0, 0, 0.045)) !important;
+}
+
+.VPSidebarItem.level-1 .link:hover .text {
+  color: var(--vp-c-text-1) !important;
+}
+
+/* Active 态：高辨识度品牌底色与高亮文本 */
+.VPSidebarItem.level-1.is-active > .item > .link,
+.VPSidebarItem.level-1 .is-active > .link {
+  background-color: color-mix(in srgb, var(--vp-c-brand-1) 12%, transparent) !important;
+}
+
+.VPSidebarItem.level-1.is-active .text,
+.VPSidebarItem.level-1 .is-active > .link .text {
   color: var(--vp-c-brand-1) !important;
   font-weight: 600 !important;
-  background-color: color-mix(in srgb, var(--vp-c-brand-1) 7%, var(--vp-c-bg-soft)) !important;
 }
 
-/* Caret / arrow */
+/* 隐藏默认过于生硬的左侧垂直指示线条，采用更现代的胶囊卡片背景 */
+.VPSidebarItem .indicator {
+  display: none !important;
+}
+
+/* Caret / 折叠指示箭头微调 */
 .VPSidebarItem .caret {
   color: var(--vp-c-text-3) !important;
 }
@@ -1576,4 +1639,16 @@ kbd,
 
 .vp-doc mjx-container[jax="CHTML"][display="true"]:hover {
   border-color: var(--vp-c-brand-soft);
+}
+
+
+/* Global Accessible Keyboard Focus Rings */
+:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1) !important;
+  outline-offset: 2px !important;
+}
+
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+  outline: none !important;
 }

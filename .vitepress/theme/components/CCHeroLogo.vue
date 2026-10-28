@@ -26,9 +26,10 @@ function onLeave() {
   ry.value = 0;
 }
 
-function onClick() {
+function flip() {
   flipped.value = !flipped.value;
 }
+const onClick = flip;
 
 const tiltStyle = computed(() => {
   return {
@@ -41,10 +42,15 @@ const tiltStyle = computed(() => {
   <div
     ref="el"
     class="flip-wrap"
+    role="button"
+    tabindex="0"
+    aria-label="翻转英语知识库徽标"
     @mousemove="onMove"
     @mouseenter="onEnter"
     @mouseleave="onLeave"
-    @click="onClick"
+    @click="flip"
+    @keydown.enter="flip"
+    @keydown.space.prevent="flip"
   >
     <div class="levitate-box" :class="{ 'is-hovered': hover }">
       <div class="tilt-layer" :style="tiltStyle">
@@ -609,6 +615,16 @@ const tiltStyle = computed(() => {
 @media (max-width: 640px) {
   .flip-wrap {
     max-width: 250px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flip-wrap,
+  .levitate-box,
+  .atom-orbit,
+  .atom-orbit-2,
+  .atom-electron {
+    animation: none !important;
+    transition: none !important;
   }
 }
 </style>

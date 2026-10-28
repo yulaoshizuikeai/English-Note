@@ -1,6 +1,15 @@
 /* 图片深色模式下反色 (排除 SVG 矢量图及 Base64 内联 SVG) */
 .dark img:not([alt*="&keep-color"]):not([src*=".svg"]):not([src^="data:image/svg"]) {
-  filter: invert(100%) hue-rotate(180deg) contrast(80%);
+  filter: brightness(0.88) contrast(1.02);
+}
+
+/* 深色模式物理/语法 SVG 图解非侵入式滤镜，消除白底灯箱效应 */
+.dark .vp-doc img[src*=".svg"],
+.dark .vp-doc img[src^="data:image/svg"],
+.dark .grammar-svg-card,
+.dark .physics-svg-card {
+  filter: invert(0.92) hue-rotate(180deg) contrast(1.05);
+  background-color: transparent !important;
 }
 
 /* VitePress 默认将 img 设为 block，保留行内图文同行，但排除独立排版图 */
@@ -205,6 +214,22 @@ html.cc-font-serif .vp-doc td {
   font-size: 18px;
 }
 
+html.cc-font-serif .vp-doc h1 {
+  font-size: 2.5rem;
+}
+
+html.cc-font-serif .vp-doc h2 {
+  font-size: 1.85rem;
+}
+
+html.cc-font-serif .vp-doc h3 {
+  font-size: 1.45rem;
+}
+
+html.cc-font-serif .vp-doc h4 {
+  font-size: 1.25rem;
+}
+
 html.cc-hide-comments .cc-comments-region,
 html.cc-hide-contributors .cc-contributors-region,
 html.cc-hide-outline .VPDocAsideOutline,
@@ -223,7 +248,7 @@ body.cc-settings-modal-open {
 /* 修复移动端下 Hero 图片与标题重叠的问题（抵消 VitePress 默认负边距） */
 @media (max-width: 959px) {
   .VPHomeHero .image {
-    margin-bottom: 14px !important;
+    margin-bottom: 16px !important;
   }
 }
 
@@ -250,6 +275,21 @@ body.cc-settings-modal-open {
 .vp-doc blockquote > p,
 .vp-doc .custom-block p {
   text-wrap: pretty;
+}
+
+/* 标题防孤字换行规范 (Heading Text Wrap Balance) */
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4,
+.vp-doc h5,
+.vp-doc h6,
+.VPHero .name,
+.VPHero .text,
+.VPHero .tagline,
+.cc-card-title,
+.CCChapterOverview .chapter-title {
+  text-wrap: balance;
 }
 
 /* 消除公式前后的括号（如（$v=0$）、【$a>0$】）跨行断裂孤立 */
@@ -423,34 +463,39 @@ body {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  margin-right: -10px !important;
+  margin-right: -8px;
 }
 
-/* 2. 侧边栏文章项触控高度 (min-height: 44px, padding: 10px 0) */
-.VPSidebarItem > .item {
-  min-height: 44px !important;
-  display: flex !important;
-  align-items: center !important;
+/* 2. 侧边栏文章项移动端触控高度 (仅移动端/触屏生效，避免桌面端臃肿与左右内边距丢失) */
+@media (max-width: 959px), (pointer: coarse) {
+  .VPSidebarItem > .item {
+    min-height: 44px !important;
+  }
+
+  .VPSidebarItem .item .link,
+  .VPSidebarItem .link {
+    min-height: 44px !important;
+    padding: 8px 12px !important;
+  }
 }
 
-.VPSidebarItem .item .link,
-.VPSidebarItem .link {
-  min-height: 44px !important;
-  display: flex !important;
-  align-items: center !important;
-  padding: 10px 0 !important;
-  box-sizing: border-box !important;
-}
-
-/* 3. 大纲目录链接触控高度 (min-height: 44px, flex align & padding) */
+/* 3. 大纲目录链接移动端触控高度 (桌面端保留紧凑优雅行高，避免膨胀与文字贴边) */
 .VPDocOutlineItem .outline-link,
 .outline-link {
-  min-height: 44px !important;
-  display: flex !important;
-  align-items: center !important;
-  padding: 8px 0 !important;
+  padding: 4px 8px !important;
+  line-height: 1.45 !important;
   box-sizing: border-box !important;
-  line-height: 20px !important;
+  border-radius: 6px !important;
+}
+
+@media (max-width: 959px), (pointer: coarse) {
+  .VPDocOutlineItem .outline-link,
+  .outline-link {
+    min-height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 8px 12px !important;
+  }
 }
 
 .VPLocalNavOutlineDropdown .outline-link {
@@ -461,23 +506,35 @@ body {
   box-sizing: border-box !important;
 }
 
-/* 4. 面包屑链接触控热区扩充至 >= 44px */
+/* 4. 面包屑导航人机工效 (桌面端精致紧凑，触屏端保证点击热区) */
 .cc-breadcrumb .bc-link,
 #breadcrumb .bc-link {
-  min-height: 44px !important;
   display: inline-flex !important;
   align-items: center !important;
-  padding: 8px 10px !important;
+  padding: 4px 6px !important;
   box-sizing: border-box !important;
 }
 
 .cc-breadcrumb .bc-current,
 #breadcrumb .bc-current {
-  min-height: 44px !important;
   display: inline-flex !important;
   align-items: center !important;
-  padding: 8px 6px !important;
+  padding: 4px 6px !important;
   box-sizing: border-box !important;
+}
+
+@media (max-width: 959px), (pointer: coarse) {
+  .cc-breadcrumb .bc-link,
+  #breadcrumb .bc-link {
+    min-height: 44px !important;
+    padding: 8px 10px !important;
+  }
+
+  .cc-breadcrumb .bc-current,
+  #breadcrumb .bc-current {
+    min-height: 44px !important;
+    padding: 8px 8px !important;
+  }
 }
 
 /* 5. PDF 下载按钮触控优化 (min-height: 44px, padding: 10px 16px) */

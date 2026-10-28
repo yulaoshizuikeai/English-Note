@@ -90,7 +90,7 @@ const handlePrint = () => {
 
 .CCPdfDownloadButtonBtn:hover {
   border-color: var(--vp-c-brand-1, #5672cd);
-  background: var(--vp-c-bg-soft-hover);
+  background: var(--vp-c-bg-mute, var(--vp-c-default-soft));
   color: var(--vp-c-brand-1, #5672cd);
   transform: translateY(-1px);
 }
